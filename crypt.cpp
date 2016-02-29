@@ -9,6 +9,7 @@
 using namespace std;
 const int N=1024;
 void msg();
+void crpt(char* string,int key);
 int main()
 {
   setlocale(LC_ALL,"Russian");
@@ -32,13 +33,12 @@ void msg()
 	crypt<<"> "<<string<<endl;
 	crypt.close();
 	cout<<string<<endl;
-	/*
-	Â ñëó÷àå, åñëè ïîíàäîáèòñÿ ñðàçó ðàñøèôðîâàòü
-	*********************************
-	scr(string,key);
-	cout<<"> ";
-	cout<<string<<endl;
-	*********************************
-	*/
+	return;
+}
+
+void crpt(char* string,int key)
+{
+	for (int i =0; i<strlen(string);++i)
+		string[i]^=key;
 	return;
 }
