@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 #include <string>
 #include <locale>
@@ -13,6 +14,7 @@ void crpt(char* string,int key);
 int main()
 {
   setlocale(LC_ALL,"Russian");
+  msg();
   system("PAUSE");
 }
 
