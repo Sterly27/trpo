@@ -14,7 +14,6 @@ void crpt(char* string,int key);
 int main()
 {
   setlocale(LC_ALL,"Russian");
-  msg();
   system("PAUSE");
 }
 
