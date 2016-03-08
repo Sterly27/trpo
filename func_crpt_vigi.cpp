@@ -15,7 +15,7 @@ system("PAUSE");
 
 void vig()
 {char str[1000], str1[1000];
-int i,j;
+int i=0,j=0;
 printf("Ââåäèòå òåêñò: \n");
 gets(str);
  printf("Ââåäèòå êëş÷: \n");  
@@ -23,7 +23,9 @@ gets(str);
  while(str[i]!=0)
  {if(j>=strlen(str1))
  j=0;
- str[i]^=(str1[j]-20);
+ str[i]^=(str1[j]-30);
+ if (str[i]<=0)
+ str[i]+=126;
  i++;j++;
  }  
  puts (str);
