@@ -23,7 +23,7 @@ gets(str);
  while(str[i]!=0)
  {if(j>=strlen(str1))
  j=0;
- str[i]^=str1[j];
+ str[i]^=(str1[j]-20);
  i++;j++;
  }  
  puts (str);
