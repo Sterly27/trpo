@@ -20,12 +20,18 @@ printf("Введите текст: \n");
 gets(str);
  printf("Введите ключ: \n");  
  gets(str1);
+ for (i=0;i<strlen(str1);i++)
+ {
+ if(str1[i]<(-98))
+ str1[i]+=128;
+ str1[i]-=30;
+}
+i=0;
  while(str[i]!=0)
  {if(j>=strlen(str1))
  j=0;
  str[i]^=(str1[j]-30);
- if (str[i]<=0)
- str[i]+=126;
+
  i++;j++;
  }  
  puts (str);
