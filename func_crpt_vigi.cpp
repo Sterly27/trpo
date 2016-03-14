@@ -3,36 +3,35 @@
 #include <clocale>
 #include <stdio.h>
 
-char str[1000], str1[1000];
+const int N=1000;
 
 void vig();
 
 int main ()
 {setlocale (LC_ALL,"Russian");
+char str[N], str1[N];
 vig();
 system("PAUSE");
 }
 
 void vig()
-{char str[1000], str1[1000];
+{char a[N], b[N];
 int i=0,j=0;
-printf("Введите текст: \n");
-gets(str);
- printf("Введите ключ: \n");  
- gets(str1);
- for (i=0;i<strlen(str1);i++)
+gin(a,N,38,15,35); 
+gin(b,N,43,15,460); 
+ for (i=0;i<strlen(b);i++)
  {
- if(str1[i]<(-98))
- str1[i]+=128;
- str1[i]-=30;
+ if(b[i]<(-98))
+ b[i]+=128;
+ b[i]-=30;
 }
 i=0;
- while(str[i]!=0)
- {if(j>=strlen(str1))
+ while(a[i]!=0)
+ {if(j>=strlen(b))
  j=0;
- str[i]^=(str1[j]-30);
+ a[i]^=(b[j]-30);
 
  i++;j++;
  }  
- puts (str);
+gout(a,38,685,35); 
  }
