@@ -25,7 +25,7 @@ putch(7);
 delay(621);
      }
      
-char* morze(char* str){
+char *morze(char* str){
      char* total;
      
      total=new char (4*strlen(str));
@@ -33,6 +33,7 @@ char* morze(char* str){
 printf("%i",strlen(str));     
 
      int j=0;
+     
      for(int i=0;i<strlen(str);i++){
      if (str[i]=='A'||str[i]=='a'){
      total[j++]='*';
@@ -186,7 +187,7 @@ printf("%i",strlen(str));
      total[j++]='*';
      total[j++]='*';
      tire();tire();tchk();tchk();}
-    if (str[i]==' ') delay(3726);
+    if (str[i]==' '){ delay(3726);}
      
      delay(621);
      total[j++]='|';
