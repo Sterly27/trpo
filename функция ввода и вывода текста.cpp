@@ -186,7 +186,7 @@ int menu=-1;
        clearmouseclick(WM_LBUTTONDOWN);
       fon();
       outtextxy(310,130,"Шифр Вижинера");
-      outtextxy(330,300,"Азбука Морзе");
+      outtextxy(330,300,"Шифр Морзе");
       outtextxy(550,470,"???");
       outtextxy(970,600,"Назад");
       while(1){
@@ -210,7 +210,7 @@ int menu=-1;
        clearmouseclick(WM_LBUTTONDOWN);
       fon();
       outtextxy(310,130,"Шифр Вижинера");
-      outtextxy(330,300,"Азбука Морзе");
+      outtextxy(330,300,"Шифр Морзе");
       outtextxy(550,470,"???");
       outtextxy(970,600,"Назад");
       while(1){
