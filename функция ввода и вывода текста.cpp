@@ -34,14 +34,16 @@ void load(int x, int y, int rad){
        tick+=rad*2+2;
        if(tick==(rad*2+2)*4){setfillstyle(1,0); bar(x+310-rad,y-45-rad,x+300+tick+rad,y-45+rad); tick=0;}
        delay(250);
-       
        }
        delay(60);
        cleardevice();
       }
 
 void winf(){          
+      char a[1];
       fon();
+      a[1]=0;
+      a[0]=62;
       setfillstyle(1,0);
       bar(10,10,600,395);
       outtextxy(15,15,"Введите текст и нажмите ввод :");  
@@ -51,12 +53,22 @@ void winf(){
       outtextxy(15,440,"Введите ключ и нажмите ввод :");
       settextstyle(8,0,19);
       outtextxy(970,600,"Назад");
-      settextstyle(8,0,1); 
+      outtextxy(720,475,"Русский");
+      outtextxy(1100,475,&a[0]);
+      settextstyle(8,0,1);
+      outtextxy(720,435,"Выберете язык шифровки :"); 
       }
 
 
 void gin(char a[],int n,int len,int x, int y){
      int key,i=0,nx=x,ny=y;
+     for(i=0;a[i]!=0;i++){
+     if(x>(15*len)+nx){
+        y+=20;
+        x=nx;
+        }
+       x+=15;                                         
+     }
      while(1){
      if(key==8&&i!=0){                 
      a[i-1]=0;
@@ -103,93 +115,86 @@ void gout(char a[],int len,int x, int y){
        y+=20;
        x=nx;         
        }
-      }
-     while(key!=13){
-     key=getch();
-     }                 
+      }                
     }
 
-char str[N], str1[N];
+char str[N], str1[N], str2[N];
 
-void vig(char a[],char b[]){
+void vig(char a[],char b[],char c[],int rus){
 int i=0,j=0,sign=0;
-gin(a,N,38,15,35); 
-gin(b,N,43,15,460); 
- for (i=0;i<strlen(b);i++)
- {
+outtextxy(685,15,"Зашифрованный текст :");
+setcolor(COLOR(10,106,209));
+outtextxy(15,15,"Введите текст и нажмите ввод :");
+setcolor(COLOR(255,255,255));
+gin(a,N,38,15,35);
+outtextxy(15,15,"Введите текст и нажмите ввод :");
+setcolor(COLOR(10,106,209));
+outtextxy(15,440,"Введите ключ и нажмите ввод :");
+setcolor(COLOR(255,255,255)); 
+gin(b,N,43,15,460);
+outtextxy(15,440,"Введите ключ и нажмите ввод :"); 
+ for (i=0;i<strlen(b);i++){
  if(b[i]<(-1))
- b[i]=-b[i];
+ b[i]+=115;
 }
- for (i=0;i<strlen(a);i++)
- {
+if(rus)
+ for (i=0;i<strlen(a);i++){
  if(a[i]<(-1))
  a[i]=-a[i];
  sign=1;
 }
 i=0;
- while(a[i]!=0)
- {if(j>=strlen(b))
+j=0;
+ while(a[i]!=0){
+ if(j>=strlen(b))
  j=0;
- a[i]^=(b[j]-30);
-
+ c[i]=a[i]^(b[j]-30);
  i++;j++;
  } 
- if(sign==1)
- for (i=0;i<strlen(a);i++)
- {
+ if(sign)
+ for (i=0;i<strlen(a);i++){   
  a[i]=-a[i];
-}  
-gout(a,38,685,35);
+ c[i]=-c[i];
+}
+setcolor(COLOR(10,106,209));
+outtextxy(685,15,"Зашифрованный текст :");
+setcolor(COLOR(255,255,255));  
+gout(c,38,685,35);
  }
  
- void vigback(char a[], char b[]){
-int i=0,j=0,sign=0;
-gout(a,38,15,35); 
-gout(b,43,15,460); 
- for (i=0;i<strlen(a);i++)
- {
-// if(a[i]<(-1))
- a[i]=-a[i];
- sign=1;
-}
-i=0;
- while(a[i]!=0)
- {if(j>=strlen(b))
- j=0;
- a[i]^=(b[j]-30);
-
- i++;j++;
- }
- if(sign==1)
-  for (i=0;i<strlen(a);i++)
- {
-// if(a[i]>(-1))
- a[i]=-a[i];
-}  
-gout(a,38,685,35); 
- }
 
 int main(){
-int menu=-1;
+int menu=-1,i=0,russ,russ1;
 
       initwindow(1280,720);
-      while(1){         
+      while(1){                  
       fon();
+      for(i=0;str[i]!=0;i++){
+      str[i]=0;
+      if(str1[i]!=0)
+      str1[i]=0;
+      str2[i]=0;                
+      }
+      i=0;
       setcolor(COLOR(255,255,255));
       settextstyle(8,0,19);
       outtextxy(430,130,"Шифратор");
       outtextxy(385,300,"Дешифратор");
       outtextxy(500,470,"Выйти");
-      while(1){        
+      while(1){
+       clearmouseclick(WM_LBUTTONDOWN);
+       delay(30);                
        if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>425&&mousex()<840&&mousey()>125&&mousey()<205){
        cleardevice();
        clearmouseclick(WM_LBUTTONDOWN);
       fon();
       outtextxy(310,130,"Шифр Вижинера");
-      outtextxy(330,300,"Шифр Морзе");
-      outtextxy(550,470,"???");
+      outtextxy(365,300,"Шифр Цезаря");
+      outtextxy(390,470,"Шифр Морзе");
       outtextxy(970,600,"Назад");
       while(1){
+        clearmouseclick(WM_LBUTTONDOWN);
+        delay(30);       
         if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>305&&mousex()<940&&mousey()>125&&mousey()<205){
         cleardevice();
         clearmouseclick(WM_LBUTTONDOWN);
@@ -210,10 +215,12 @@ int menu=-1;
        clearmouseclick(WM_LBUTTONDOWN);
       fon();
       outtextxy(310,130,"Шифр Вижинера");
-      outtextxy(330,300,"Шифр Морзе");
-      outtextxy(550,470,"???");
+      outtextxy(365,300,"Шифр Цезаря");
+      outtextxy(390,470,"Шифр Морзе");
       outtextxy(970,600,"Назад");
       while(1){
+        clearmouseclick(WM_LBUTTONDOWN);
+        delay(30);       
         if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>305&&mousex()<940&&mousey()>125&&mousey()<205){
         cleardevice();
         clearmouseclick(WM_LBUTTONDOWN);
@@ -240,10 +247,25 @@ load(900,690,4);
 settextstyle(8,0,1);   
 winf();
 while(1){
-if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<400)         
-vig(str,str1);
 clearmouseclick(WM_LBUTTONDOWN);
 delay(30);
+if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>1095&&mousex()<1250&&mousey()>475&&mousey()<570){
+russ1=1;                                                                                            
+settextstyle(8,0,19);
+printf("%i",menu);
+if(russ1==1){  
+outtextxy(720,475,"Английский");
+russ1=0;
+}
+if(russ1==0){
+outtextxy(720,475,"Русский");
+russ1=1;
+}
+settextstyle(8,0,1);                                                                            
+}         
+if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<400){         
+vig(str,str1,str2,russ);
+}
 if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>965&&mousex()<1200&&mousey()>595&&mousey()<675){
 cleardevice();
 clearmouseclick(WM_LBUTTONDOWN);
@@ -259,10 +281,10 @@ load(900,690,4);
 settextstyle(8,0,1);   
 winf();
 while(1){
-if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<400)         
-vig(str,str1);
 clearmouseclick(WM_LBUTTONDOWN);
-delay(30);
+delay(30);         
+if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<400)         
+vig(str,str1,str2,russ);
 if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>965&&mousex()<1200&&mousey()>595&&mousey()<675){
 cleardevice();
 clearmouseclick(WM_LBUTTONDOWN);
