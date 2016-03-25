@@ -1,4 +1,6 @@
-
+#include <string.h>
+#include <conio.h>
+#include <graphics.h>
 void tire(){
 putch(7);
 delay(207);
@@ -13,14 +15,42 @@ putch(7);
 delay(621);
      }
 char* demorze(char* str){
+    char* itog;
+    itog=new char[strlen(str)/4];
     char* temp;
-    int f=0;
-    temp=new char [5]
+    int f=0,t=0;
+    temp=new char [5];
     for (int i=0;i<strlen(str);i++){
-        temp[f++]=str[i];
-        if (str[i]=='|') {
+        if (str[i]!='|') temp[f++]=str[i];
+        else {
             f=0;
-            strcmp(temp,"**-");
+            if (strcmp(temp,"*-"))itog[t++]='a';
+            if (strcmp(temp,"-***"))itog[t++]='b';
+            if (strcmp(temp,"-*-*"))itog[t++]='c';
+            if (strcmp(temp,"-**"))itog[t++]='d';
+            if (strcmp(temp,"*"))itog[t++]='e';
+            if (strcmp(temp,"**-*"))itog[t++]='f';
+            if (strcmp(temp,"--*"))itog[t++]='g';
+            if (strcmp(temp,"****"))itog[t++]='h';
+            if (strcmp(temp,"**"))itog[t++]='i';
+            if (strcmp(temp,"*---"))itog[t++]='j';
+            if (strcmp(temp,"-*-"))itog[t++]='k';
+            if (strcmp(temp,"*-**"))itog[t++]='l';
+            if (strcmp(temp,"--"))itog[t++]='m';
+            if (strcmp(temp,"-*"))itog[t++]='n';
+            if (strcmp(temp,"---"))itog[t++]='o';
+            if (strcmp(temp,"**-"))itog[t++]='p';
+            if (strcmp(temp,"**-"))itog[t++]='q';
+            if (strcmp(temp,"**-"))itog[t++]='r';
+            if (strcmp(temp,"**-"))itog[t++]='s';
+            if (strcmp(temp,"**-"))itog[t++]='t';
+            if (strcmp(temp,"**-"))itog[t++]='u';
+            if (strcmp(temp,"**-"))itog[t++]='v';
+            if (strcmp(temp,"**-"))itog[t++]='w';
+            if (strcmp(temp,"**-"))itog[t++]='x';
+            if (strcmp(temp,"**-"))itog[t++]='y';
+            if (strcmp(temp,"**-"))itog[t++]='z';
+            
             
             }
         
