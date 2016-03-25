@@ -3,26 +3,26 @@
 #include <graphics.h>
 void tire(){
 putch(7);
-delay(207);
+//delay(207);
 putch(7);
-delay(207);
+//delay(207);
 putch(7);
-delay(621);
+//delay(621);
      }
      
 void tchk(){
 putch(7);
-delay(621);
+//  delay(621);
      }
 char* demorze(char* str){
     char* itog;
-    itog=new char[strlen(str)/4];
+    itog=new char [strlen(str)];
     char temp[5]={0,0,0,0,0};
+    
     int f=0,t=0;
     for (int i=0;i<strlen(str);i++){
         if (str[i]!='|') temp[f++]=str[i];
-        
-        if (str[i]=='|'||i==strlen(str)-1) {
+        if (str[i]==' '||str[i]=='|'||i==strlen(str)-1) {
             f=0;
             if (!strcmp(temp,"*-"))itog[t++]='a';
             if (!strcmp(temp,"-***"))itog[t++]='b';
@@ -50,17 +50,17 @@ char* demorze(char* str){
             if (!strcmp(temp,"-**-"))itog[t++]='x';
             if (!strcmp(temp,"-*--"))itog[t++]='y';
             if (!strcmp(temp,"--**"))itog[t++]='z';
-            if (!strcmp(temp," "))itog[t++]=' ';
+
             temp[0]=0;
             temp[1]=0;
             temp[2]=0;
             temp[3]=0;
             temp[4]=0;
-            
+            itog[t]=0;
             }
+        if (str[i]==' ') itog[t++]=' ';
         
         }
-        itog[t]=0;
     return itog;
     }
 char *morze(char* str){
@@ -220,22 +220,30 @@ char *morze(char* str){
      total[j++]='*';
      total[j++]='*';
      tire();tire();tchk();tchk();}
-    if (str[i]==32){total[j++]==' '; delay(3726);}
+    if (str[i]==' '){total[j++]=' ';// delay(3726);
+    }
      
-     delay(621);
-     total[j++]='|';
+     //delay(621);
+     if (str[i]!='|')total[j++]='|';
      }
-     total[j++]=0;
+     total[j]=0;
      printf("\n------------------Crypted successfully!-------------------\n");
      return total;
 }
 int main(){
-    char a[10],*itog,*itog2;
-    gets(a);
-    itog=new char[100];
-    itog=morze(a);
-    printf("\n%s",itog);
-    itog2=demorze(itog);
-    printf("\n%s",itog2);
+    char a[100],*rez,*rez2;
+    for (int i=0;i<15;i++)
+    a[i]=getch();
+    //По необъяснимым причинам gets посылает надолго и далеко
+    //Поэтому использую getch()' всё-равно в интерфейсе getch 
+    //используется. 
+    //А ведь у меня чуть не началась депрессия на фоне 
+    //нескончаемых ошибок ;(((
+    //Ненависть изжога боль!
+    printf("%s",a);
+    rez=morze(a);
+    printf("\n%s",rez);
+    rez2=demorze(rez);
+    printf("\n%s",rez2);
     getch();
     }
