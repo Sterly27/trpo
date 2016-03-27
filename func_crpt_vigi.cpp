@@ -6,15 +6,16 @@
 const int N=1000;
 
 void vig();
-int main ()
-{SetConsoleCP(1251); SetConsoleOutputCP(1251);
+
+int main (){
+SetConsoleCP(1251); SetConsoleOutputCP(1251);
 char str[N], str1[N];
 vig();
 system("PAUSE");
 }
 
-void vig()
-{char a[N], b[N];
+void vig(){
+char a[N], b[N];
 int i=0,j=0;
 gets (a);
 
