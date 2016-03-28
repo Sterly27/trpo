@@ -40,10 +40,7 @@ void load(int x, int y, int rad){
       }
 
 void winf(){          
-      char a[1];
       fon();
-      a[1]=0;
-      a[0]=62;
       setfillstyle(1,0);
       bar(10,10,600,395);
       outtextxy(15,15,"Введите текст и нажмите ввод :");  
@@ -53,10 +50,7 @@ void winf(){
       outtextxy(15,440,"Введите ключ и нажмите ввод :");
       settextstyle(8,0,19);
       outtextxy(970,600,"Назад");
-      outtextxy(720,475,"Русский");
-      outtextxy(1100,475,&a[0]);
       settextstyle(8,0,1);
-      outtextxy(720,435,"Выберете язык шифровки :"); 
       }
 
 
@@ -106,10 +100,11 @@ void gout(char a[],int len,int x, int y){
       while(a[i]!=0){
       b[0]=a[i];
       b[1]=0;
-      if(b[0]==' '&&x==nx) x-=15;           
+      
+      //if(b[0]==' '&&x==nx) x-=15;    УБИРАЕТ ПРОБЕЛЫ В НАЧАЛЕ СТРОКИ        
       outtextxy(x,y,&b[0]);
       x+=15;
-      if(a[i]==' '&&a[i+1]==' ')  x-=15;
+      //if(a[i]==' '&&a[i+1]==' ')  x-=15;      УБИРАЕТ ЛИШНИЕ ПРОБЕЛЫ
       i++;
        if(x>(15*len)+nx){
        y+=20;
@@ -120,8 +115,8 @@ void gout(char a[],int len,int x, int y){
 
 char str[N], str1[N], str2[N];
 
-void vig(char a[],char b[],char c[],int rus){
-int i=0,j=0,sign=0;
+void vig(char a[],char b[],char c[]){
+int i=0,j=0;
 outtextxy(685,15,"Зашифрованный текст :");
 setcolor(COLOR(10,106,209));
 outtextxy(15,15,"Введите текст и нажмите ввод :");
@@ -133,38 +128,33 @@ outtextxy(15,440,"Введите ключ и нажмите ввод :");
 setcolor(COLOR(255,255,255)); 
 gin(b,N,43,15,460);
 outtextxy(15,440,"Введите ключ и нажмите ввод :"); 
- for (i=0;i<strlen(b);i++){
- if(b[i]<(-1))
- b[i]+=115;
+for (i=0;i<strlen(b);i++){
+ if(b[i]<(-85))
+ b[i]+=98;
+ b[i]-=40;
 }
-if(rus)
- for (i=0;i<strlen(a);i++){
- if(a[i]<(-1))
- a[i]=-a[i];
- sign=1;
-}
+
 i=0;
-j=0;
  while(a[i]!=0){
  if(j>=strlen(b))
  j=0;
- c[i]=a[i]^(b[j]-30);
+ c[i]=a[i]^b[j];
  i++;j++;
- } 
- if(sign)
- for (i=0;i<strlen(a);i++){   
- a[i]=-a[i];
- c[i]=-c[i];
-}
+ }
 setcolor(COLOR(10,106,209));
 outtextxy(685,15,"Зашифрованный текст :");
 setcolor(COLOR(255,255,255));  
 gout(c,38,685,35);
- }
+for(i=0;c[i]!=0;i++)   
+      c[i]=0; 
+      
+for(i=0;b[i]!=0;i++)
+      b[i]+=40;                
+}
  
 
 int main(){
-int menu=-1,i=0,russ,russ1;
+int menu=-1,i=0;
 
       initwindow(1280,720);
       while(1){                  
@@ -172,8 +162,7 @@ int menu=-1,i=0,russ,russ1;
       for(i=0;str[i]!=0;i++){
       str[i]=0;
       if(str1[i]!=0)
-      str1[i]=0;
-      str2[i]=0;                
+      str1[i]=0;                
       }
       i=0;
       setcolor(COLOR(255,255,255));
@@ -248,23 +237,9 @@ settextstyle(8,0,1);
 winf();
 while(1){
 clearmouseclick(WM_LBUTTONDOWN);
-delay(30);
-if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>1095&&mousex()<1250&&mousey()>475&&mousey()<570){
-russ1=1;                                                                                            
-settextstyle(8,0,19);
-printf("%i",menu);
-if(russ1==1){  
-outtextxy(720,475,"Английский");
-russ1=0;
-}
-if(russ1==0){
-outtextxy(720,475,"Русский");
-russ1=1;
-}
-settextstyle(8,0,1);                                                                            
-}         
+delay(30);         
 if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<400){         
-vig(str,str1,str2,russ);
+vig(str,str1,str2);
 }
 if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>965&&mousex()<1200&&mousey()>595&&mousey()<675){
 cleardevice();
@@ -284,7 +259,7 @@ while(1){
 clearmouseclick(WM_LBUTTONDOWN);
 delay(30);         
 if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<400)         
-vig(str,str1,str2,russ);
+vig(str,str1,str2);
 if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>965&&mousex()<1200&&mousey()>595&&mousey()<675){
 cleardevice();
 clearmouseclick(WM_LBUTTONDOWN);
