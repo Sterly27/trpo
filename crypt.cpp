@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 const int N=663; 
 char str[N], str1[N], str2[N];
@@ -14,6 +15,8 @@ void load(int x, int y, int rad);
 //-------------------------Окна ввода и кнопка выхода в меню------------------------
 void winf();
 void winf_morze();
+//---------------Функция посимвольного ввода числа в графическое окно---------------
+int inpnum(char* a,int n,int len, int x, int y);
 //----------------Функция посимвольного ввода строки в графическое окно-------------
 void gin(char a[],int n,int len,int x, int y);
 //-------------------Функция посимвольного вывода в глафическое окно----------------
@@ -109,7 +112,7 @@ int menu=-1,i=0;
 if(menu==1){
 load(900,690,4);                             
 settextstyle(8,0,1);   
-winf_morze();
+winf();
 while(1){
 clearmouseclick(WM_LBUTTONDOWN);
 delay(30);         
@@ -227,7 +230,7 @@ void gin(char a[],int n,int len,int x, int y){
      x-=15;                
      }
      key=getch();        
-       if((key>64&&key<91)||(key>96&&key<123)||(key==32)||(key==-72||key==-88)||(key>-65&&key<0)){
+       if((key>64&&key<91)||(key>96&&key<123)||(key==32)||(key>47&&key<58)){
        a[i]=key;
        i++;
        a[i]=0;
@@ -247,7 +250,55 @@ void gin(char a[],int n,int len,int x, int y){
        if(key==13) break;
       }
      }
-
+     
+int inpnum(char* a,int n,int len, int x, int y){
+     int key,i=0,j=0,nx=x,ny=y,step=0,num=0;
+     for(i=0;a[i]!=0;i++){
+     if(x>(15*len)+nx){
+        y+=20;
+        x=nx;
+        }
+       x+=15;                                         
+     }
+     while(1){
+     if(key==8&&i!=0){                 
+     a[i-1]=0;
+     setfillstyle(0,0);
+     bar(x,y,x-16,y+18);
+     i--;
+     if(y!=ny&&x==(nx+15)){y-=20;x=(15*(len+2))+nx;}
+     x-=15;                
+     }
+     key=getch();        
+       if(key>47&&key<58){                                           
+       a[i]=key;              
+       i++;
+       a[i]=0;
+        if(x>(15*len)+nx){
+        y+=20;
+        x=nx;
+        }
+       outtextxy(x,y,&a[i-1]);
+       x+=15;       
+       }
+       if(i==n)
+       while(key!=13){
+       key=getch();
+       if(key==8) break;
+       }
+       if(key==13){
+       step=pow(10,strlen(a))+1;                           
+       for(j=0;j<strlen(a);j++){            
+        num=num+((a[j]-48)*(step/10));
+        step=step/10;
+        }
+        if(num<=256) 
+         return (num);
+         else num=0; 
+        }
+      }
+     }
+     
 void gout(char a[],int len,int x, int y){
      int i=0,nx=x,ny=y,key;
      char b[1];
@@ -538,10 +589,10 @@ void morze(char* str){
     gout(total,70,15,320);
 }
 
-void crpt(char* string,int* ckey,int* key){  
+void crpt(char* string,int* ckey,int key){  
 char itog[N];
     gin(string,N,38,15,35);
-    gin(chkey);
+    //gin(ckey);
 	for (int i =0; i<strlen(string);++i)
 		itog[i]=string[i]^key;
 }
