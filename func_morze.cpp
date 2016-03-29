@@ -3,16 +3,16 @@
 #include <graphics.h>
 void tire(){
 putch(7);
-//delay(207);
+delay(207);
 putch(7);
-//delay(207);
+delay(207);
 putch(7);
-//delay(621);
+delay(621);
      }
      
 void tchk(){
 putch(7);
-//  delay(621);
+  delay(621);
      }
 char* demorze(char* str){
     char* itog;
@@ -24,6 +24,17 @@ char* demorze(char* str){
         if (str[i]!='|') temp[f++]=str[i];
         if (str[i]==' '||str[i]=='|'||i==strlen(str)-1) {
             f=0;
+            if (!strcmp(temp,"*----"))itog[t++]='1';
+            if (!strcmp(temp,"**---"))itog[t++]='2';
+            if (!strcmp(temp,"***--"))itog[t++]='3';
+            if (!strcmp(temp,"****-"))itog[t++]='4';
+            if (!strcmp(temp,"*****"))itog[t++]='5';
+            if (!strcmp(temp,"-****"))itog[t++]='6';
+            if (!strcmp(temp,"--***"))itog[t++]='7';
+            if (!strcmp(temp,"---**"))itog[t++]='8';
+            if (!strcmp(temp,"----*"))itog[t++]='9';
+            if (!strcmp(temp,"-----"))itog[t++]='0';
+            
             if (!strcmp(temp,"*-"))itog[t++]='a';
             if (!strcmp(temp,"-***"))itog[t++]='b';
             if (!strcmp(temp,"-*-*"))itog[t++]='c';
@@ -65,9 +76,134 @@ char* demorze(char* str){
     }
 char *morze(char* str){
      char* total;
-     total=new char (4*strlen(str));  
+     total=new char [strlen(str)*51];  
      int j=0;
      for(int i=0;i<strlen(str);i++){
+            
+            
+     if (str[i]=='0'){
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     tire();
+     tire();
+     tire();
+     tire();
+     tire();
+     }
+     if (str[i]=='1'){
+     total[j++]='*';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     tchk();
+     tire();
+     tire();
+     tire();
+     tire();
+     }
+     
+     if (str[i]=='2'){
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     tchk();
+     tchk();
+     tire();
+     tire();
+     tire();
+     }
+     if (str[i]=='3'){
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='-';
+     total[j++]='-';
+     tchk();
+     tchk();
+     tchk();
+     tire();
+     tire();
+     }
+     
+     if (str[i]=='4'){
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='-';
+     tchk();
+     tchk();
+     tchk();
+     tchk();
+     tire();
+     }
+     if (str[i]=='5'){
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     tchk();
+     tchk();
+     tchk();
+     tchk();
+     tchk();
+     }
+     if (str[i]=='6'){
+     total[j++]='-';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     tire();
+     tchk();
+     tchk();
+     tchk();
+     tchk();
+     }
+     if (str[i]=='7'){
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     tire();
+     tire();
+     tchk();
+     tchk();
+     tchk();
+     }
+     if (str[i]=='8'){
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='*';
+     total[j++]='*';
+     tire();
+     tire();
+     tire();
+     tchk();
+     tchk();
+     }
+     if (str[i]=='9'){
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='*';
+     tire();
+     tire();
+     tire();
+     tire();
+     tchk();
+     }
+            
      if (str[i]=='A'||str[i]=='a'){
      total[j++]='*';
      total[j++]='-';
@@ -220,10 +356,9 @@ char *morze(char* str){
      total[j++]='*';
      total[j++]='*';
      tire();tire();tchk();tchk();}
-    if (str[i]==' '){total[j++]=' ';// delay(3726);
-    }
+    if (str[i]==' '){total[j++]=' ';delay(3726);}
      
-     //delay(621);
+     delay(621);
      if (str[i]!='|')total[j++]='|';
      }
      total[j]=0;
@@ -232,14 +367,7 @@ char *morze(char* str){
 }
 int main(){
     char a[100],*rez,*rez2;
-    for (int i=0;i<15;i++)
-    a[i]=getch();
-    //По необъяснимым причинам gets посылает надолго и далеко
-    //Поэтому использую getch()' всё-равно в интерфейсе getch 
-    //используется. 
-    //А ведь у меня чуть не началась депрессия на фоне 
-    //нескончаемых ошибок ;(((
-    //Ненависть изжога боль!
+    gets(a);
     printf("%s",a);
     rez=morze(a);
     printf("\n%s",rez);
