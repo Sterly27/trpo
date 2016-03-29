@@ -444,6 +444,17 @@ void demorze(char* str){
         if (str[i]!='|') temp[f++]=str[i];
         if (str[i]==' '||str[i]=='|'||i==strlen(str)-1) {
             f=0;
+            if (!strcmp(temp,"*----"))itog[t++]='1';
+            if (!strcmp(temp,"**---"))itog[t++]='2';
+            if (!strcmp(temp,"***--"))itog[t++]='3';
+            if (!strcmp(temp,"****-"))itog[t++]='4';
+            if (!strcmp(temp,"*****"))itog[t++]='5';
+            if (!strcmp(temp,"-****"))itog[t++]='6';
+            if (!strcmp(temp,"--***"))itog[t++]='7';
+            if (!strcmp(temp,"---**"))itog[t++]='8';
+            if (!strcmp(temp,"----*"))itog[t++]='9';
+            if (!strcmp(temp,"-----"))itog[t++]='0';
+            
             if (!strcmp(temp,"*-"))itog[t++]='a';
             if (!strcmp(temp,"-***"))itog[t++]='b';
             if (!strcmp(temp,"-*-*"))itog[t++]='c';
@@ -493,9 +504,133 @@ void morze(char* str){
      outtextxy(15,15,"¬ведите текст и нажмите ввод :"); 
 
      char* total;
-     total=new char [4*strlen(str)];  
+     total=new char [6*strlen(str)];  
      int j=0;
      for(int i=0;i<strlen(str);i++){
+            
+            if (str[i]=='0'){
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     tire();
+     tire();
+     tire();
+     tire();
+     tire();
+     }
+     if (str[i]=='1'){
+     total[j++]='*';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     tchk();
+     tire();
+     tire();
+     tire();
+     tire();
+     }
+     
+     if (str[i]=='2'){
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     tchk();
+     tchk();
+     tire();
+     tire();
+     tire();
+     }
+     if (str[i]=='3'){
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='-';
+     total[j++]='-';
+     tchk();
+     tchk();
+     tchk();
+     tire();
+     tire();
+     }
+     
+     if (str[i]=='4'){
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='-';
+     tchk();
+     tchk();
+     tchk();
+     tchk();
+     tire();
+     }
+     if (str[i]=='5'){
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     tchk();
+     tchk();
+     tchk();
+     tchk();
+     tchk();
+     }
+     if (str[i]=='6'){
+     total[j++]='-';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     tire();
+     tchk();
+     tchk();
+     tchk();
+     tchk();
+     }
+     if (str[i]=='7'){
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='*';
+     total[j++]='*';
+     total[j++]='*';
+     tire();
+     tire();
+     tchk();
+     tchk();
+     tchk();
+     }
+     if (str[i]=='8'){
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='*';
+     total[j++]='*';
+     tire();
+     tire();
+     tire();
+     tchk();
+     tchk();
+     }
+     if (str[i]=='9'){
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='-';
+     total[j++]='*';
+     tire();
+     tire();
+     tire();
+     tire();
+     tchk();
+     }
+            
      if (str[i]=='A'||str[i]=='a'){
      total[j++]='*';
      total[j++]='-';
@@ -533,7 +668,7 @@ void morze(char* str){
      if (str[i]=='E'||str[i]=='e'){
      total[j++]='*';
      tchk();}
-     if (str[i]=='F'||str[i]=='f'){total[j++]='*';
+     if (str[i]=='F'||str[i]=='f'){
      total[j++]='*';
      total[j++]='*';
      total[j++]='-';
@@ -544,7 +679,7 @@ void morze(char* str){
      tchk();
      }
      if (str[i]=='G'||str[i]=='g'){
-     total[j++]='*';
+     total[j++]='-';
      total[j++]='-';
      total[j++]='*';
      tire();tire();tchk();}
