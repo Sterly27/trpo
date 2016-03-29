@@ -5,8 +5,9 @@
 #include <string.h>
 #include <math.h>
 
-const int N=663; 
-char str[N], str1[N], str2[N];
+const int N=663,L=1053; 
+char str[N], str1[L], str2[L], nu[9];  
+char* total;
 
 //---------------------------Оформление фона окна приложения------------------------
 void fon();
@@ -15,6 +16,7 @@ void load(int x, int y, int rad);
 //-------------------------Окна ввода и кнопка выхода в меню------------------------
 void winf();
 void winf_morze();
+void winf_crpt();
 //---------------Функция посимвольного ввода числа в графическое окно---------------
 int inpnum(char* a,int n,int len, int x, int y);
 //----------------Функция посимвольного ввода строки в графическое окно-------------
@@ -28,7 +30,7 @@ void morze(char* str);
 //----------------------------Функция дешифратора Морзе-----------------------------
 void demorze(char* str);
 //-------------------------------Функция шифра Цезаря-------------------------------
-void crpt(char* string,int key);
+void crpt(char* string,char* itog);
 
 
 int main(){
@@ -40,9 +42,11 @@ int menu=-1,i=0;
       for(i=0;str[i]!=0;i++){
       str[i]=0;
       if(str1[i]!=0)
-      str1[i]=0;                
+      str1[i]=0;               
       }
-      i=0;
+      for(i=0;str2[i]!=0;i++)
+      str2[i]=0;
+      i=0; 
       setcolor(COLOR(255,255,255));
       settextstyle(8,0,19);
       outtextxy(430,130,"Шифратор");
@@ -68,6 +72,18 @@ int menu=-1,i=0;
         menu=1;
         break;                                                                                         
         } 
+        if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>360&&mousex()<900&&mousey()>295&&mousey()<375){
+        cleardevice();
+        clearmouseclick(WM_LBUTTONDOWN);
+        menu=2;
+        break;     
+        }
+        if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>385&&mousex()<890&&mousey()>465&&mousey()<545){
+        cleardevice();
+        clearmouseclick(WM_LBUTTONDOWN);
+        menu=3;
+        break;     
+        }
         if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>965&&mousex()<1200&&mousey()>595&&mousey()<675){
         cleardevice();
         clearmouseclick(WM_LBUTTONDOWN);
@@ -75,7 +91,7 @@ int menu=-1,i=0;
         break;                                                                                         
         }       
       }
-      if(menu==1||menu==4) break;
+      if(menu==1||menu==2||menu==3||menu==4) break;
        }
        if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>380&&mousex()<880&&mousey()>295&&mousey()<375){
        cleardevice();
@@ -91,8 +107,20 @@ int menu=-1,i=0;
         if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>305&&mousex()<940&&mousey()>125&&mousey()<205){
         cleardevice();
         clearmouseclick(WM_LBUTTONDOWN);
-        menu=2;
+        menu=5;
         break;                                                                                         
+        }
+        if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>360&&mousex()<900&&mousey()>295&&mousey()<375){
+        cleardevice();
+        clearmouseclick(WM_LBUTTONDOWN);
+        menu=6;
+        break;     
+        }
+        if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>385&&mousex()<890&&mousey()>465&&mousey()<545){
+        cleardevice();
+        clearmouseclick(WM_LBUTTONDOWN);
+        menu=7;
+        break;     
         }        
         if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>965&&mousex()<1200&&mousey()>595&&mousey()<675){
         cleardevice();
@@ -101,7 +129,7 @@ int menu=-1,i=0;
         break;                                                                                         
         }       
       }
-      if(menu==2||menu==4) break;
+      if(menu==5||menu==6||menu==7||menu==4) break;
        }
        if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>495&&mousex()<765&&mousey()>465&&mousey()<535){
        cleardevice();
@@ -122,7 +150,7 @@ vig(str,str1);
 if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>965&&mousex()<1200&&mousey()>595&&mousey()<675){
 cleardevice();
 clearmouseclick(WM_LBUTTONDOWN);
-menu=-1;
+menu=4;
 settextstyle(8,0,19);
 load(900,690,4);
 break;                                                                                         
@@ -132,13 +160,32 @@ break;
 if(menu==2){
 load(900,690,4);                             
 settextstyle(8,0,1);   
-winf();
+winf_crpt();
 while(1){
 clearmouseclick(WM_LBUTTONDOWN);
 delay(30);         
-if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<400)         
-vig(str,str1);
-if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>965&&mousex()<1200&&mousey()>595&&mousey()<675){
+if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<585)         
+crpt(str2,str1);
+if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>1015&&mousex()<1250&&mousey()>605&&mousey()<685){
+cleardevice();
+clearmouseclick(WM_LBUTTONDOWN);
+menu=-1;
+settextstyle(8,0,19);
+load(900,690,4);
+break;                                                                                         
+}
+}
+}
+if(menu==3){
+load(900,690,4);                             
+settextstyle(8,0,1);   
+winf_morze();
+while(1){
+clearmouseclick(WM_LBUTTONDOWN);
+delay(30);         
+if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<1275&&mousey()>5&&mousey()<265)         
+morze(str);
+if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>995&&mousex()<1230&&mousey()>595&&mousey()<675){
 cleardevice();
 clearmouseclick(WM_LBUTTONDOWN);
 menu=-1;
@@ -199,6 +246,20 @@ void winf(){
       settextstyle(8,0,1);
       }
 
+void winf_crpt(){          
+      fon();
+      setfillstyle(1,0);
+      bar(10,10,600,580);
+      outtextxy(15,15,"Введите текст и нажмите ввод :");  
+      bar(680,10,1270,580); 
+      outtextxy(685,15,"Итог :");
+      bar(10,600,600,710); 
+      outtextxy(15,605,"Введите ключ-число и нажмите ввод :");
+      settextstyle(8,0,19);
+      outtextxy(1020,610,"Назад");
+      settextstyle(8,0,1);
+      }
+
 void winf_morze(){          
       fon();
       setfillstyle(1,0);
@@ -207,7 +268,7 @@ void winf_morze(){
       bar(10,280,960,710); 
       outtextxy(15,285,"Итог :");
       settextstyle(8,0,19);
-      outtextxy(970,600,"Назад");
+      outtextxy(1000,600,"Назад");
       settextstyle(8,0,1);
       }
 
@@ -292,9 +353,9 @@ int inpnum(char* a,int n,int len, int x, int y){
         num=num+((a[j]-48)*(step/10));
         step=step/10;
         }
-        if(num<=256) 
+        if(num<=255) 
          return (num);
-         else num=0; 
+         else num=0;
         }
       }
      }
@@ -361,16 +422,16 @@ for(i=0;b[i]!=0;i++)
 
 void tire(){
 putch(7);
-//delay(207);
+delay(207);
 putch(7);
-//delay(207);
+delay(207);
 putch(7);
-//delay(621);
+delay(621);
      }
      
 void tchk(){
 putch(7);
-//  delay(621);
+delay(621);
      }
 void demorze(char* str){
     gin(str,N,82,15,35);  
@@ -424,9 +485,15 @@ void demorze(char* str){
     }
     
 void morze(char* str){
+     outtextxy(15,285,"Итог :");
+     setcolor(COLOR(10,106,209));
+     outtextxy(15,15,"Введите текст и нажмите ввод :"); 
+     setcolor(COLOR(255,255,255));
      gin(str,N,82,15,35);
+     outtextxy(15,15,"Введите текст и нажмите ввод :"); 
+
      char* total;
-     total=new char (4*strlen(str));  
+     total=new char [4*strlen(str)];  
      int j=0;
      for(int i=0;i<strlen(str);i++){
      if (str[i]=='A'||str[i]=='a'){
@@ -582,17 +649,39 @@ void morze(char* str){
      total[j++]='*';
      tire();tire();tchk();tchk();}
     if (str[i]==' '){total[j++]=' ';
+    delay(3726);
     }
+    delay(621);
      if (str[i]!='|')total[j++]='|';
      }
+     setfillstyle(1,COLOR(0,0,0));
+     bar(15,315,960,710);
+     setcolor(COLOR(10,106,209));
+     outtextxy(15,285,"Итог :");
+     setcolor(COLOR(255,255,255)); 
      total[j]=0;
-    gout(total,70,15,320);
+     gout(total,70,15,320);
 }
 
-void crpt(char* string,int* ckey,int key){  
-char itog[N];
-    gin(string,N,38,15,35);
-    //gin(ckey);
+void crpt(char* string,char* itog){  
+int key;
+    outtextxy(685,15,"Итог :");
+    setcolor(COLOR(10,106,209));
+    outtextxy(15,15,"Введите текст и нажмите ввод :");
+    setcolor(COLOR(255,255,255));
+    gin(string,L,38,15,35);
+    outtextxy(15,15,"Введите текст и нажмите ввод :");
+    setcolor(COLOR(10,106,209));
+    outtextxy(15,605,"Введите ключ-число и нажмите ввод :");
+    setcolor(COLOR(255,255,255)); 
+    key=inpnum(nu,3,2,15,625);
+    outtextxy(15,605,"Введите ключ-число и нажмите ввод :");
 	for (int i =0; i<strlen(string);++i)
 		itog[i]=string[i]^key;
+		setfillstyle(1,COLOR(0,0,0));
+        bar(685,35,1270,395); 
+        setcolor(COLOR(10,106,209));
+        outtextxy(685,15,"Итог :");
+        setcolor(COLOR(255,255,255));  
+		gout(itog,38,685,35);
 }
