@@ -40,12 +40,12 @@ int menu=-1,i=0;
       while(1){                  
       fon();
       for(i=0;str[i]!=0;i++){
-      str[i]=0;
-      if(str1[i]!=0)
-      str1[i]=0;               
+      str[i]=0;             
       }
       for(i=0;str2[i]!=0;i++)
       str2[i]=0;
+      for(i=0;str1[i]!=0;i++)
+      str1[i]=0;
       i=0; 
       setcolor(COLOR(255,255,255));
       settextstyle(8,0,19);
@@ -664,7 +664,7 @@ void morze(char* str){
 }
 
 void crpt(char* string,char* itog){  
-int key;
+int key,i;
     outtextxy(685,15,"»тог :");
     setcolor(COLOR(10,106,209));
     outtextxy(15,15,"¬ведите текст и нажмите ввод :");
@@ -679,9 +679,11 @@ int key;
 	for (int i =0; i<strlen(string);++i)
 		itog[i]=string[i]^key;
 		setfillstyle(1,COLOR(0,0,0));
-        bar(685,35,1270,395); 
+        bar(685,35,1270,580);  
         setcolor(COLOR(10,106,209));
         outtextxy(685,15,"»тог :");
         setcolor(COLOR(255,255,255));  
 		gout(itog,38,685,35);
+		for(i=0;itog[i]!=0;i++)   
+        itog[i]=0;
 }
