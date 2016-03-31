@@ -4,48 +4,61 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 const int N=663,L=1053; 
 char str[N], str1[L], str2[L], nu[9];  
 char* total;
 
-//---------------------------Оформление фона окна приложения------------------------
+//---------------------------Оформление фона окна приложения-------------------------
 void fon();
-//-----------------------------------Функция загрузки-------------------------------
+//-----------------------------------Функция загрузки--------------------------------
 void load(int x, int y, int rad);
-//-------------------------Окна ввода и кнопка выхода в меню------------------------
+//-------------------------Окна ввода и кнопка выхода в меню-------------------------
 void winf();
 void winf_morze();
 void winf_crpt();
-//---------------Функция посимвольного ввода числа в графическое окно---------------
+//-Функции сохранения шифровки в текстовом файле и чтения этого файла для дешифровки-
+void indoc(char* a);
+void ofdoc(char* a,int len,int x, int y);
+//---------------Функция посимвольного ввода числа в графическое окно----------------
 int inpnum(char* a,int n,int len, int x, int y);
-//----------------Функция посимвольного ввода строки в графическое окно-------------
+//----------------Функция посимвольного ввода строки в графическое окно--------------
 void gin(char a[],int n,int len,int x, int y);
-//-------------------Функция посимвольного вывода в глафическое окно----------------
+//-------------------Функция посимвольного вывода в глафическое окно-----------------
 void gout(char a[],int len,int x, int y);
-//------------------------------Функция шифра Вижинера------------------------------
-void vig(char a[],char b[]);
-//-----------------------------Функция шифратора Морзе------------------------------
+//------------------------------Функция шифра Вижинера-------------------------------
+void vig(char a[],char b[], int flag=1);
+//-----------------------------Функция шифратора Морзе-------------------------------
 void morze(char* str); 
-//----------------------------Функция дешифратора Морзе-----------------------------
+//----------------------------Функция дешифратора Морзе------------------------------
 void demorze(char* str);
-//-------------------------------Функция шифра Цезаря-------------------------------
-void crpt(char* string,char* itog);
+//-------------------------------Функция шифра Цезаря--------------------------------
+void crpt(char* string,char* itog,int flag=1);
 
 
 int main(){
-int menu=-1,i=0;
+int menu=-1,i=0,key;
       initwindow(1280,720);
       
       while(1){                  
       fon();
-      for(i=0;str[i]!=0;i++){
-      str[i]=0;             
-      }
+      //-------------------------обнуляем массивы------------------------------//
+      for(i=0;str[i]!=0;i++)
+      str[i]=0; 
+                  
       for(i=0;str2[i]!=0;i++)
       str2[i]=0;
+      
       for(i=0;str1[i]!=0;i++)
       str1[i]=0;
+      
+      for (i=0;nu[i]!=0;i++)
+      nu[i]=0;
+      //-----------------------------------------------------------------------//
       i=0; 
       setcolor(COLOR(255,255,255));
       settextstyle(8,0,19);
@@ -142,11 +155,13 @@ load(900,690,4);
 settextstyle(8,0,1);   
 winf();
 while(1){
+key=-30;         
 clearmouseclick(WM_LBUTTONDOWN);
-delay(30);         
-if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<400){         
+delay(30);
+if(kbhit())
+key=getch();         
+if((ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<400)||((key>64&&key<91)||(key>96&&key<123)||(key==32)||(key>47&&key<58)))         
 vig(str,str1);
-}
 if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>965&&mousex()<1200&&mousey()>595&&mousey()<675){
 cleardevice();
 clearmouseclick(WM_LBUTTONDOWN);
@@ -162,9 +177,12 @@ load(900,690,4);
 settextstyle(8,0,1);   
 winf_crpt();
 while(1){
+key=-30;         
 clearmouseclick(WM_LBUTTONDOWN);
-delay(30);         
-if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<585)         
+delay(30);
+if(kbhit())
+key=getch();         
+if((ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<585)||((key>64&&key<91)||(key>96&&key<123)||(key==32)||(key>47&&key<58)))         
 crpt(str2,str1);
 if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>1015&&mousex()<1250&&mousey()>605&&mousey()<685){
 cleardevice();
@@ -181,10 +199,85 @@ load(900,690,4);
 settextstyle(8,0,1);   
 winf_morze();
 while(1){
+key=-30;         
 clearmouseclick(WM_LBUTTONDOWN);
-delay(30);         
-if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<1275&&mousey()>5&&mousey()<265)         
+delay(30);
+if(kbhit())
+key=getch();        
+if((ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<1275&&mousey()>5&&mousey()<265)||((key>64&&key<91)||(key>96&&key<123)||(key==32)||(key>47&&key<58)))         
 morze(str);
+if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>995&&mousex()<1230&&mousey()>595&&mousey()<675){
+cleardevice();
+clearmouseclick(WM_LBUTTONDOWN);
+menu=-1;
+settextstyle(8,0,19);
+load(900,690,4);
+break;                                                                                         
+}
+}
+}
+if(menu==5){
+load(900,690,4);                             
+settextstyle(8,0,1);   
+winf();
+while(1){
+key=-30;         
+clearmouseclick(WM_LBUTTONDOWN);
+delay(30);
+if(kbhit())
+key=getch();
+if((ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<400)||((key>64&&key<91)||(key>96&&key<123)||(key==32)||(key>47&&key<58))){         
+ofdoc(str,38,15,35);          
+vig(str,str1,0);
+}
+if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>965&&mousex()<1200&&mousey()>595&&mousey()<675){
+cleardevice();
+clearmouseclick(WM_LBUTTONDOWN);
+menu=4;
+settextstyle(8,0,19);
+load(900,690,4);
+break;                                                                                         
+}
+}
+}  
+if(menu==6){
+load(900,690,4);                             
+settextstyle(8,0,1);   
+winf_crpt();
+while(1){
+key=-30;         
+clearmouseclick(WM_LBUTTONDOWN);
+delay(30);
+if(kbhit())
+key=getch();       
+if((ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<585)||((key>64&&key<91)||(key>96&&key<123)||(key==32)||(key>47&&key<58))){
+ofdoc(str2,38,15,35); 
+crpt(str2,str1,0);
+}
+if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>1015&&mousex()<1250&&mousey()>605&&mousey()<685){
+cleardevice();
+clearmouseclick(WM_LBUTTONDOWN);
+menu=-1;
+settextstyle(8,0,19);
+load(900,690,4);
+break;                                                                                         
+}
+}
+}
+if(menu==7){
+load(900,690,4);                             
+settextstyle(8,0,1);   
+winf_morze();
+while(1){
+key=-30;         
+clearmouseclick(WM_LBUTTONDOWN);
+delay(30);
+if(kbhit())
+key=getch();         
+if((ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<1275&&mousey()>5&&mousey()<265)||((key>64&&key<91)||(key>96&&key<123)||(key==32)||(key>47&&key<58))){         
+ofdoc(str,82,15,35);
+demorze(str);
+}
 if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>995&&mousex()<1230&&mousey()>595&&mousey()<675){
 cleardevice();
 clearmouseclick(WM_LBUTTONDOWN);
@@ -226,7 +319,7 @@ void load(int x, int y, int rad){
        if(tick<(rad*2+2)*4){setfillstyle(9,COLOR(255,255,255)); circle(x+310+tick,y-45,rad);floodfill(x+310+tick,y-45,COLOR(255,255,255));}
        tick+=rad*2+2;
        if(tick==(rad*2+2)*4){setfillstyle(1,0); bar(x+310-rad,y-45-rad,x+300+tick+rad,y-45+rad); tick=0;}
-       delay(250);
+       delay(135);
        }
        delay(60);
        cleardevice();
@@ -271,6 +364,19 @@ void winf_morze(){
       outtextxy(1000,600,"Назад");
       settextstyle(8,0,1);
       }
+      
+void indoc(char* a){
+     ofstream out(".\\CryptFile\\Crypt.crpt");
+     out << a;
+     out.close();
+     }
+     
+void ofdoc(char* a,int len,int x, int y){
+     ifstream in (".\\CryptFile\\Crypt.crpt");
+     in >> a;
+     in.close();
+     gout(a,len,x,y);
+     }
 
 void gin(char a[],int n,int len,int x, int y){
      int key,i=0,nx=x,ny=y;
@@ -281,7 +387,7 @@ void gin(char a[],int n,int len,int x, int y){
         }
        x+=15;                                         
      }
-     while(1){
+     while(1){      
      if(key==8&&i!=0){                 
      a[i-1]=0;
      setfillstyle(0,0);
@@ -379,7 +485,7 @@ void gout(char a[],int len,int x, int y){
       }                
     }
 
-void vig(char a[],char b[]){
+void vig(char a[],char b[],int flag){
 int i=0,j=0;
 char c[N];
 outtextxy(685,15,"Итог :");
@@ -396,7 +502,7 @@ outtextxy(15,440,"Введите ключ и нажмите ввод :");
 for (i=0;i<strlen(b);i++){
  if(b[i]<(-85))
  b[i]+=98;
- b[i]-=40;
+ b[i]-=60;
 }
 
 i=0;
@@ -413,11 +519,12 @@ setcolor(COLOR(10,106,209));
 outtextxy(685,15,"Итог :");
 setcolor(COLOR(255,255,255));  
 gout(c,38,685,35);
+if(flag) indoc(c);
 for(i=0;c[i]!=0;i++)   
       c[i]=0; 
       
 for(i=0;b[i]!=0;i++)
-      b[i]+=40;                
+      b[i]+=60;                
 }
 
 void tire(){
@@ -492,7 +599,7 @@ void demorze(char* str){
         if (str[i]==' ') itog[t++]=' ';
         
         }
-    gout(itog,70,685,35);
+    gout(itog,70,15,320);
     }
     
 void morze(char* str){
@@ -796,9 +903,10 @@ void morze(char* str){
      setcolor(COLOR(255,255,255)); 
      total[j]=0;
      gout(total,70,15,320);
+     indoc(total);
 }
 
-void crpt(char* string,char* itog){  
+void crpt(char* string,char* itog,int flag){  
 int key,i;
     outtextxy(685,15,"Итог :");
     setcolor(COLOR(10,106,209));
@@ -819,6 +927,7 @@ int key,i;
         outtextxy(685,15,"Итог :");
         setcolor(COLOR(255,255,255));  
 		gout(itog,38,685,35);
+		if(flag) indoc(itog);
 		for(i=0;itog[i]!=0;i++)   
         itog[i]=0;
 }
