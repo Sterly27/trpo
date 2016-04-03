@@ -32,6 +32,7 @@ void gin(char a[],int n,int len,int x, int y);
 void gout(char a[],int len,int x, int y);
 //------------------------------Функция шифра Вижинера-------------------------------
 void vig(char a[],char b[], int flag=1);
+void devig(char a[],char b[],int flag=1);
 //-----------------------------Функция шифратора Морзе-------------------------------
 void morze(char* str); 
 //----------------------------Функция дешифратора Морзе------------------------------
@@ -500,16 +501,18 @@ setcolor(COLOR(255,255,255));
 gin(b,N,43,15,460);
 outtextxy(15,440,"Введите ключ и нажмите ввод :"); 
 for (i=0;i<strlen(b);i++){
- if(b[i]<(-85))
- b[i]+=98;
- b[i]-=60;
+ b[i]=b[i]-29;
 }
 
 i=0;
  while(a[i]!=0){
- if(j>=strlen(b))
+ if(b[j]==0)
  j=0;
- c[i]=a[i]^b[j];
+ c[i]=a[i]+b[j];
+ if(c[i]==127 || c[i]<0)
+     c[i]=c[i]-95;
+ if(c[i]<32)
+     c[i]=c[i]+95;
  i++;j++;
  }
  c[i]=0;
@@ -524,7 +527,7 @@ for(i=0;c[i]!=0;i++)
       c[i]=0; 
       
 for(i=0;b[i]!=0;i++)
-      b[i]+=60;                
+      b[i]+=29;                
 }
 
 void tire(){
@@ -930,4 +933,46 @@ int key,i;
 		if(flag) indoc(itog);
 		for(i=0;itog[i]!=0;i++)   
         itog[i]=0;
+}
+
+void devig(char a[],char b[],int flag){
+int i=0,j=0;
+char c[N];
+outtextxy(685,15,"Итог :");
+setcolor(COLOR(10,106,209));
+outtextxy(15,15,"Введите текст и нажмите ввод :");
+setcolor(COLOR(255,255,255));
+gin(a,N,38,15,35);
+outtextxy(15,15,"Введите текст и нажмите ввод :");
+setcolor(COLOR(10,106,209));
+outtextxy(15,440,"Введите ключ и нажмите ввод :");
+setcolor(COLOR(255,255,255)); 
+gin(b,N,43,15,460);
+outtextxy(15,440,"Введите ключ и нажмите ввод :"); 
+for (i=0;i<strlen(b);i++){
+ b[i]=b[i]-29;
+}
+
+i=0;
+ while(a[i]!=0){
+ if(b[j]==0)
+ j=0;
+  c[i]=a[i]-b[j];
+ if(a[i]<b[j]+29)
+ c[i]=c[i]+95;
+ i++;j++;
+ }
+ c[i]=0;
+setfillstyle(1,COLOR(0,0,0));
+bar(685,35,1270,395); 
+setcolor(COLOR(10,106,209));
+outtextxy(685,15,"Итог :");
+setcolor(COLOR(255,255,255));  
+gout(c,38,685,35);
+if(flag) indoc(c);
+for(i=0;c[i]!=0;i++)   
+      c[i]=0; 
+      
+for(i=0;b[i]!=0;i++)
+      b[i]+=29;                
 }
