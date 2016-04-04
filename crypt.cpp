@@ -229,7 +229,7 @@ if(kbhit())
 key=getch();
 if((ismouseclick(WM_LBUTTONDOWN)&&mousex()>5&&mousex()<605&&mousey()>5&&mousey()<400)||((key>64&&key<91)||(key>96&&key<123)||(key==32)||(key>47&&key<58))){         
 ofdoc(str,38,15,35);          
-vig(str,str1,0);
+devig(str,str1,0);
 }
 if(ismouseclick(WM_LBUTTONDOWN)&&mousex()>965&&mousex()<1200&&mousey()>595&&mousey()<675){
 cleardevice();
