@@ -365,13 +365,4 @@ char *morze(char* str){
      printf("\n------------------Crypted successfully!-------------------\n");
      return total;
 }
-int main(){
-    char a[100],*rez,*rez2;
-    gets(a);
-    printf("%s",a);
-    rez=morze(a);
-    printf("\n%s",rez);
-    rez2=demorze(rez);
-    printf("\n%s",rez2);
-    getch();
-    }
+

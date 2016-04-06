@@ -59,7 +59,3 @@ void morze(char* str){
      }
      printf("\n------------------Crypted successfully!-------------------\n");
 }
-int main(){
-    char a[1009];
-    demorze(a);
-    }
