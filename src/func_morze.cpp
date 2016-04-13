@@ -11,7 +11,7 @@ void tchk(){
 putch(7);
   delay(621);
      }
-char* demorze(char* str){
+void demorze(char* str){
     char* itog;
     itog=new char [strlen(str)];
     char temp[5]={0,0,0,0,0};
@@ -75,9 +75,9 @@ char* demorze(char* str){
         if (str[i]==' ') itog[t++]=' ';
         
         }
-    return itog;
+    str=itog;
     }
-char* morze(char* str){
+void morze(char* str){
      char* total;
      total=new char [strlen(str)*8];  
      int j=0;
@@ -421,5 +421,5 @@ char* morze(char* str){
      if (str[i]!='|')total[j++]='|';
      }
      total[j]=0;
-     return total;
+     str=total;
 }
