@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+func_morze.exe
+=======
 bin/
 build/
 *.swp
@@ -5,3 +8,4 @@ build/
 *~
 
 *.exe
+>>>>>>> master
