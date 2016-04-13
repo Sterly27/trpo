@@ -1,9 +1,3 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <windows.h>
-
-const int N=1000;
 
 void vig(char *a,char *b)
 {
