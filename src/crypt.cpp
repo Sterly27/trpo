@@ -11,7 +11,7 @@
 using namespace std;
 const int N=1024;
 void msg();
-void crpt(char* string,int key);
+char crpt(char* string,int key);
 int main()
 {
   setlocale(LC_ALL,"Russian");
@@ -38,7 +38,7 @@ void msg()
 	return;
 }
 
-void crpt(char* string,int key)
+char crpt(char* string,int key)
 { 
 	for (int i =0; i<strlen(string);++i)
 	{
@@ -46,5 +46,5 @@ void crpt(char* string,int key)
 		string[i]^=key;
 		if(string[i]>126) string[i]-=95;
 	}
-	return;
+	return string;
 }
