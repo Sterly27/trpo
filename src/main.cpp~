@@ -1,7 +1,0 @@
-int main(){
-  char a[100];
-  gets(a);
-  a=morze(a);
-  puts(a);
-  getch();
-}
