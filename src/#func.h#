@@ -8,5 +8,6 @@
 char* morze(char* str);
 char* demoze(char* str);
 
+
 #include <func_morze.cpp>
 #endif

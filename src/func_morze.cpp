@@ -1,6 +1,3 @@
-#include <string.h>
-#include <conio.h>
-#include <graphics.h>
 void tire(){
 putch(7);
 delay(207);
@@ -424,6 +421,5 @@ char* morze(char* str){
      if (str[i]!='|')total[j++]='|';
      }
      total[j]=0;
-     printf("\n------------------Crypted successfully!-------------------\n");
      return total;
 }
