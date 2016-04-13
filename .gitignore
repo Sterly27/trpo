@@ -1,11 +1,1 @@
-<<<<<<< HEAD
 func_morze.exe
-=======
-bin/
-build/
-*.swp
-*.o
-*~
-
-*.exe
->>>>>>> master
