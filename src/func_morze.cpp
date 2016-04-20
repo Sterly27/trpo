@@ -1,20 +1,23 @@
+#include <string.h>
+
 void tire(){
-putch(7);
-delay(207);
-putch(7);
-delay(207);
-putch(7);
-delay(621);
+//putch(7);
+//delay(207);
+//putch(7);
+//delay(207);
+//putch(7);
+//delay(621);
      }
      
 void tchk(){
-putch(7);
-  delay(621);
+//putch(7);
+//  delay(621);
      }
+     
 void demorze(char* str){
     char* itog;
     itog=new char [strlen(str)];
-    char temp[5]={0,0,0,0,0};
+    char temp[7]={0,0,0,0,0,0,0};
     
     int f=0,t=0;
     for (int i=0;i<strlen(str);i++){
@@ -77,13 +80,11 @@ void demorze(char* str){
         }
     str=itog;
     }
-void morze(char* str){
-     char* total;
-     total=new char [strlen(str)*8];  
+void morze(char* str, char* total){  
      int j=0;
      for(int i=0;i<strlen(str);i++){
             
-     if (strp[i]=='.'){
+     if (str[i]=='.'){
 	 total[j++]='*';
 	 total[j++]='*';
 	 total[j++]='*';
@@ -111,7 +112,7 @@ void morze(char* str){
 	 tchk();
 	 tire();
 		 }
-	 if (strp[i]=='!'){
+	 if (str[i]=='!'){
 	 total[j++]='-';
 	 total[j++]='-';
 	 total[j++]='*';
@@ -125,7 +126,7 @@ void morze(char* str){
 	 tire();
 	 tire();
 	 }
-	 if (strp[i]=='?'){
+	 if (str[i]=='?'){
 	 total[j++]='*';
 	 total[j++]='*';
 	 total[j++]='-';
@@ -299,7 +300,8 @@ void morze(char* str){
      }
      if (str[i]=='E'||str[i]=='e'){
      total[j++]='*';
-     tchk();}
+     tchk();
+	 }
      if (str[i]=='F'||str[i]=='f'){total[j++]='*';
      total[j++]='*';
      total[j++]='*';
@@ -314,112 +316,133 @@ void morze(char* str){
      total[j++]='*';
      total[j++]='-';
      total[j++]='*';
-     tire();tire();tchk();}
+     tire();tire();tchk();
+}
      if (str[i]=='H'||str[i]=='h'){
      total[j++]='*';
      total[j++]='*';
      total[j++]='*';
      total[j++]='*';
-     tchk();tchk();tchk();tchk();}
+     tchk();tchk();tchk();tchk();
+	 }
      if (str[i]=='I'||str[i]=='i'){
      total[j++]='*';
      total[j++]='*';
-     tchk();tchk();}
+     tchk();tchk();
+}
      if (str[i]=='J'||str[i]=='j'){
      total[j++]='*';
      total[j++]='-';
      total[j++]='-';
      total[j++]='-';
-     tchk();tire();tire();tire();}
+     tchk();tire();tire();tire();
+	 }
      if (str[i]=='K'||str[i]=='k'){
      total[j++]='-';
      total[j++]='*';
      total[j++]='-';
-     tire();tchk();tire();}
+     tire();tchk();tire();
+	 }
      if (str[i]=='L'||str[i]=='l'){
      total[j++]='*';
      total[j++]='-';
      total[j++]='*';
      total[j++]='*';
-     tchk();tire();tchk();tchk();}
+     tchk();tire();tchk();tchk();
+	 }
      if (str[i]=='M'||str[i]=='m'){
      total[j++]='-';
      total[j++]='-';
-     tire();tire();}
+     tire();tire();
+	 }
      if (str[i]=='N'||str[i]=='n'){
      total[j++]='-';
      total[j++]='*';
-     tire();tchk();}
+     tire();tchk();
+	 }
      if (str[i]=='O'||str[i]=='o'){
      total[j++]='-';
      total[j++]='-';
      total[j++]='-';
      
-     tire();tire();tire();}
+     tire();tire();tire();
+	 }
      if (str[i]=='P'||str[i]=='p'){
      total[j++]='*';
      total[j++]='-';
      total[j++]='-';
      total[j++]='*';
-     tchk();tire();tire();tchk();}
+     tchk();tire();tire();tchk();
+	 }
      if (str[i]=='Q'||str[i]=='q'){
      total[j++]='-';
      total[j++]='-';
      total[j++]='*';
      total[j++]='-';
-     tire();tire();tchk();tire();}
+     tire();tire();tchk();tire();
+	 }
      if (str[i]=='R'||str[i]=='r'){
      total[j++]='*';
      total[j++]='-';
      total[j++]='*';
-     tchk();tire();tchk();}
+     tchk();tire();tchk();
+	 }
      if (str[i]=='S'||str[i]=='s'){
      total[j++]='*';
      total[j++]='*';
      total[j++]='*';
-     tchk();tchk();tchk();}
+     tchk();tchk();tchk();
+	 }
      if (str[i]=='T'||str[i]=='t'){
      total[j++]='*';
-     tire();}
+     tire();
+	 }
      if (str[i]=='Y'||str[i]=='y'){
      total[j++]='-';
      total[j++]='*';
      total[j++]='-';
      total[j++]='-';
-     tire();tchk();tire();tire();}
+     tire();tchk();tire();tire();
+	 }
      if (str[i]=='U'||str[i]=='u'){
      total[j++]='*';
      total[j++]='*';
      total[j++]='-';
-     tchk();tchk();tire();}
+     tchk();tchk();tire();
+	 }
      if (str[i]=='V'||str[i]=='v'){
      total[j++]='*';
      total[j++]='*';
      total[j++]='*';
      total[j++]='-';
-     tchk();tchk();tchk();tire();}
+     tchk();tchk();tchk();tire();
+	 }
      if (str[i]=='W'||str[i]=='w'){
      total[j++]='*';
      total[j++]='-';
      total[j++]='-';
-     tchk();tire();tire();}
+     tchk();tire();tire();
+	 }
      if (str[i]=='X'||str[i]=='x'){
      total[j++]='-';
      total[j++]='*';
      total[j++]='*';
      total[j++]='-';
-     tire();tchk();tchk();tire();}
+     tire();tchk();tchk();tire();
+	 }
      if (str[i]=='Z'||str[i]=='z'){
      total[j++]='-';
      total[j++]='-';
      total[j++]='*';
      total[j++]='*';
-     tire();tire();tchk();tchk();}
-    if (str[i]==' '){total[j++]=' ';delay(3726);}
+     tire();tire();tchk();tchk();
+	 }
+    if (str[i]==' '){total[j++]=' ';
+//	delay(3726);
+	}
      
-     delay(621);
+//     delay(621);
      if (str[i]!='|')total[j++]='|';
      }
      total[j]=0;
-     str=total;
 }

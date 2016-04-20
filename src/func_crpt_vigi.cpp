@@ -1,4 +1,6 @@
-void vig(char a[],char b[],int flag){
+#include <string.h>
+
+void vig(char a[],char b[]){
 int i=0,j=0;
 for (i=0;i<strlen(b);i++){
  b[i]=b[i]-29;
@@ -19,7 +21,7 @@ for(i=0;b[i]!=0;i++)
 }
 
 
-void devig(char a[],char b[],int flag){
+void devig(char a[],char b[]){
 int i=0,j=0;
 for (i=0;i<strlen(b);i++){
  b[i]=b[i]-29;
