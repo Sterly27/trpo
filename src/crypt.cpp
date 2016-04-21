@@ -7,7 +7,7 @@ const int N=1024;
 
 int main(){
 	int menu,exit=0,i,key2;
-	char str[N],*strm,key1[N];	
+	char str[N],*strm,key1[N],paus[1];	
 	 
 	//---------------------------------------------MENU----------------------------------------//
 	while(exit!=1){
@@ -23,14 +23,14 @@ int main(){
 		    key1[i]=0;
 	    } 
 	    //---------------------------------------END_RESET-----------------------------------//
-	    system("cls");
+	    system("cls||clear");
 	    printf("1)Encrypt\n\n");
 	    printf("2)Decrypt\n\n");
 	    printf("3)Exit\n\n");
 		scanf("%i",&menu);
 		switch(menu){
 			case 1:
-				system("cls");
+	            system("cls||clear");
 	            printf("1)Vigener\n\n");
 	            printf("2)Caesar\n\n");
 	            printf("3)Morze\n\n");
@@ -38,7 +38,7 @@ int main(){
 	            scanf("%i",&menu);
 	            switch(menu){
 	            	case 1://--------------------CRYPT_VIGI-------------------//
-	            		system("cls");
+	            		system("cls||clear");
 	            		printf("Enter text:\n");
 	            	    gets(str);
 	            	    gets(str);
@@ -47,10 +47,10 @@ int main(){
 	            		vig(str,key1);
 	            		puts("Encrypted text:");
 	            		puts(str);
-	            		system("PAUSE");
+	            		gets(paus);
 	            		break;
 	            	case 2://-------------------CRYPT_CEASER------------------//
-	            		system("cls");
+	            		system("cls||clear");
 	            		printf("Enter text:\n");
 	            		gets(str);
 	            	    gets(str);
@@ -59,30 +59,29 @@ int main(){
 	            		crpt(str,key2);
 	            		printf("Encrypted text:\n");
 	            		puts(str);
-	            		system("PAUSE");
+	            		gets(paus);
 	            		break;
 	            	case 3://-------------------CRYPT_MORZE------------------//
-				system("cls");
+				        system("cls||clear");
 	            		printf("Enter text:\n");
 	            		gets(str);
-	            	    	gets(str);
+	            	    gets(str);
 	            		strm=new char [strlen(str)*10];
 	            		morze(str,strm);
 	            		printf("Encrypted text:\n");
 	            		puts(strm);
-				char tempyC;
-	            		scanf("%c",&tempyC);
+	            		gets(paus);
 	            		break;
 	            	case 4://-------------------BUTTON_BACK------------------//
 	            		break;
 	            	default://----------------OTHER_OPTIONS-----------------//
-	            		system("cls");	
+	            		system("cls||clear");
 			            printf("This menu item does not exist.\n\n");
-			            system("PAUSE");
+			            gets(paus);
 				}
 	            break;
 			case 2:
-				system("cls");
+				system("cls||clear");
 	            printf("1)Vigener\n\n");
 	            printf("2)Caesar\n\n");
 	            printf("3)Morze\n\n");
@@ -90,7 +89,7 @@ int main(){
 	            scanf("%i",&menu);
 	            switch(menu){
 	            	case 1://-------------------DECRYPT_VIGI------------------//
-	            		system("cls");
+	            		system("cls||clear");
 	            		printf("Enter text:\n");
 	            		gets(str);
 	            	    gets(str);
@@ -99,10 +98,10 @@ int main(){
 	            		devig(str,key1);
 	            		printf("Decrypted text:\n");
 	            		puts(str);
-	            		system("PAUSE");
+	            		gets(paus);
 	            		break;
 	            	case 2://------------------DECRYPT_CEASER-----------------//
-	            		system("cls");
+	            		system("cls||clear");
 	            		printf("Enter text:\n");
 	            		gets(str);
 	            	    gets(str);
@@ -111,24 +110,24 @@ int main(){
 	            		crpt(str,key2);
 	            		printf("Decrypted text:\n");
 	            		puts(str);
-	            		system("PAUSE");
+	            		gets(paus);
 	            		break;
 	            	case 3://------------------DECRYPT_MORZE-----------------//
-	            		system("cls");
+	            		system("cls||clear");
 	            		printf("Enter text:\n");
 	            		gets(str);
 	            	    gets(str);
 	            		demorze(str);
 	            		printf("Encrypted text:\n");
 	            		puts(str);
-	            		system("PAUSE");
+	            		gets(paus);
 	            		break;
 	            	case 4://------------------BUTTON_BACK-------------------//
 	            		break;
 	            	default://----------------OTHER_OPTIONS-----------------//
-	            		system("cls");	
+	            		system("cls||clear");
 			            printf("This menu item does not exist.\n\n");
-			            system("PAUSE");
+			            gets(paus);
 			            break;
 				}
 	            break;
@@ -136,9 +135,9 @@ int main(){
 				exit=1;
 				break;
 			default://------------------------OTHER_OPTIONS--------------------------//
-			system("cls");	
+			system("cls||clear");
 			printf("This menu item does not exist.\n\n");
-			system("PAUSE");
+			gets(paus);
 			break;	
 		}
 	}
