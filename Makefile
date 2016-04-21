@@ -2,7 +2,7 @@
 
 SRC_PATH = src
 
-INCLUDES = -I $(SRC_PATH)/ -I thirdparty/ -I src/
+root_include_dir := thirdparty
 
 all:program testilo
 
