@@ -1,4 +1,8 @@
-#ПОЖАЛУЙСТА, ДАЖЕ НЕ ДУМАЙТЕ РЕДАКТИРОВАТЬ ТУТ ЧТО-ЛИБО, ДАЖЕ НЕ ДЫШИТЕ ТУТ!!
+#NO EDIT THIS  FILE! PLEAASE!
+
+SRC_PATH = src
+
+INCLUDES = -I $(SRC_PATH)/ -I thirdparty/ -I src/
 
 all:program testilo
 
@@ -22,4 +26,5 @@ func_morze.o: ./src/func_morze.cpp
 	g++ -c ./src/func_morze.cpp -o ./obj/func_morze.o
 
 testilo:
-	g++  -ld ./thirdparty/ctest.h  -ld ./src/crypt_func.h ./obj/func_morze.o ./test/main.cpp -o ./bin/tests/tmorze
+	g++ ./obj/func_morze.o ./test/main.cpp -o ./bin/tests/tmorze
+
