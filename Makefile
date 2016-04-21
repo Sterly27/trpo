@@ -22,4 +22,4 @@ func_morze.o: ./src/func_morze.cpp
 	g++ -c ./src/func_morze.cpp -o ./obj/func_morze.o
 
 testilo:
-	g++ ./obj/func_morze.o ./test/main.cpp -o ./bin/tests/tmorze -ld ./thirdparty/ctest.h ./src/crypt_func.h
+	g++  -ld ./thirdparty/ctest.h  -ld ./src/crypt_func.h ./obj/func_morze.o ./test/main.cpp -o ./bin/tests/tmorze
