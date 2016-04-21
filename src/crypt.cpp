@@ -1,6 +1,7 @@
-#include "crypt_func.h"
 #include <stdlib.h>
+#include "crypt_func.h"
 #include <stdio.h>
+#include <string.h>
 
 const int N=1024;
 
@@ -61,15 +62,16 @@ int main(){
 	            		system("PAUSE");
 	            		break;
 	            	case 3://-------------------CRYPT_MORZE------------------//
-	            		system("cls");
+				system("cls");
 	            		printf("Enter text:\n");
 	            		gets(str);
-	            	    gets(str);
-	            		strm=new char [strlen(str)*8];
+	            	    	gets(str);
+	            		strm=new char [strlen(str)*10];
 	            		morze(str,strm);
 	            		printf("Encrypted text:\n");
 	            		puts(strm);
-	            		system("PAUSE");
+				char tempyC;
+	            		scanf("%c",&tempyC);
 	            		break;
 	            	case 4://-------------------BUTTON_BACK------------------//
 	            		break;
@@ -141,4 +143,5 @@ int main(){
 		}
 	}
 	//-----------------------------------------MENU_END-------------------------------------//
+return 0;
 }
