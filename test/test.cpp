@@ -1,8 +1,8 @@
 //#include "/home/me/TRPO/thirdparty/ctest.h"
 //#include "/home/me/TRPO/src/crypt_func.h"
 #include <string.h>
-#include "crypt_func.h"
-#include "ctest.h"
+#include <crypt_func.h>
+#include <ctest.h>
 CTEST (sname, test1){
   const char a[]="hello world, how you doing?";
   const char b[]="****|*|*-**|*-**|---| |*--|---|*-*|*-**|-**|*-*-*-| |****|---|*--| |-*--|---|**-| |-**|---|**|-*|--*|**--**|";
