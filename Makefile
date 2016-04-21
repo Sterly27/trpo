@@ -21,5 +21,9 @@ func_crpt_vigi.o: ./src/func_crpt_vigi.cpp
 func_morze.o: ./src/func_morze.cpp
 	g++ -c ./src/func_morze.cpp -o ./obj/func_morze.o
 
-testilo:
-	g++ ./obj/func_morze.o ./thirdparty/ctest.h ./src/crypt_func.h ./test/main.cpp -o ./bin/tests/tmorze
+testilo:ctestM
+	g++ ./obj/func_morze.o ./obj/ctest.o ./src/crypt_func.h ./test/main.cpp -o ./bin/tests/tmorze
+
+
+ctestM:
+	g++ ./src/crypt_func.h ./thirdparty/ctest.h -o ./obj/ctest.o
