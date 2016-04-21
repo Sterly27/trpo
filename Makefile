@@ -1,7 +1,9 @@
 #ПОЖАЛУЙСТА, ДАЖЕ НЕ ДУМАЙТЕ РЕДАКТИРОВАТЬ ТУТ ЧТО-ЛИБО, ДАЖЕ НЕ ДЫШИТЕ ТУТ!!
 
-all:program
+all:program testilo
 
+testilo: ./thirdparty/ctest.h
+	g++ ./test/main.cpp -o ./bin/tests/tmorze
 
 program: crypt_func.o func_crpt_vigi.o func_morze.o main
 	g++  ./obj/crypt_func.o ./obj/func_crpt_vigi.o ./obj/func_morze.o ./obj/crypt.o -o ./bin/program
@@ -20,5 +22,4 @@ func_crpt_vigi.o: ./src/func_crpt_vigi.cpp
 
 func_morze.o: ./src/func_morze.cpp
 	g++ -c ./src/func_morze.cpp -o ./obj/func_morze.o
-
 
