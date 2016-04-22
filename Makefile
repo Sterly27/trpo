@@ -4,7 +4,7 @@ SRC_PATH = src
 
 root_include_dir := thirdparty
 
-all: Ctest program testilo
+all: program testilo
 
 
 program: crypt_func.o func_crpt_vigi.o func_morze.o main
