@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdio.h>
 
 void tire(){
 //putch(7);
@@ -16,9 +17,16 @@ void tchk(){
      
 void demorze(char* str){
     char* itog;
-    itog=new char [strlen(str)];
-    char temp[7]={0,0,0,0,0,0,0};
+    itog=new char [strlen(str)+1];
+    char temp[8]={0,0,0,0,0,0,0,0};
+
+	for (int i=0;i<strlen(str)-1;i++)
+	if(str[i]!=0&&str[i]!=' '&&str[i]!='*'&&str[i]!='-'&&str[i]!='|'){
+str[0]=0;
+return; 
+}
     
+
     int f=0,t=0;
     for (int i=0;i<strlen(str);i++){
         if (str[i]!='|') temp[f++]=str[i];
@@ -73,6 +81,10 @@ void demorze(char* str){
             temp[2]=0;
             temp[3]=0;
             temp[4]=0;
+            temp[5]=0;
+            temp[6]=0;
+            temp[7]=0;
+
             itog[t]=0;
             }
         if (str[i]==' ') itog[t++]=' ';
@@ -84,7 +96,9 @@ strcpy(str,itog);
 void morze(char* str, char* total){  
      int j=0;
      for(int i=0;i<strlen(str);i++){
-            
+
+            	if((!(str[i]<=57&&str[i]>=48)&&str[i]<=64&&str[i]!=44&&str[i]!=46&&str[i]!=33&&str[i]!=32&&str[i]!=63)||(str[i]>=91&&str[i]<=96)||str[i]>=123){total[0]='E';total[1]='R';total[2]='R';total[3]='O';total[4]='R';total[5]=0; return; }
+
      if (str[i]=='.'){
 	 total[j++]='*';
 	 total[j++]='*';
