@@ -28,4 +28,4 @@ func_morze.o: ./src/func_morze.cpp
 
 
 testilo:
-	g++ ./obj/func_morze.o ./test/main.cpp -o ./bin/tests/tmorze
+	g++ ./obj/func_morze.o ./test/main.cpp -Wall -o ./bin/tests/tmorze
