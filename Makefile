@@ -6,12 +6,6 @@ root_include_dir := thirdparty
 
 all: Ctest program testilo
 
-Ctest: Func
-	g++ -c ./thirdparty/compHead.cpp ./test/test.cpp -o ./obj/ctest.o
-
-Func:
-	g++ -c ./src/compFunc.cpp -o ./obj/Func.o
-
 
 program: crypt_func.o func_crpt_vigi.o func_morze.o main
 	g++  ./obj/crypt_func.o ./obj/func_crpt_vigi.o ./obj/func_morze.o ./obj/crypt.o -o ./bin/program
@@ -34,4 +28,4 @@ func_morze.o: ./src/func_morze.cpp
 
 
 testilo:
-	g++ ./obj/func_morze.o ./obj/ctest.o ./obj/Func.o -o ./bin/tests/tmorze
+	g++ ./obj/func_morze.o ./test/main.cpp -o ./bin/tests/tmorze
