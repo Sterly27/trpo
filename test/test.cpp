@@ -1,6 +1,7 @@
 //#include "/home/me/TRPO/thirdparty/ctest.h"
 //#include "../../crypt_func.h"
 #include <string.h>
+#include "../src/crypt_func.h"
 //#include "crypt_func.h"
 //#include "../../ctest.h"
 CTEST (sname, test1){
