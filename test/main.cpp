@@ -1,6 +1,5 @@
 #define CTEST_MAIN
-//#include "/../../thirdparty/ctest.h"
-//#include "ctest.h"
+#include "distance_test.cpp"
 #include "../thirdparty/ctest.h"
 #include "test.cpp"
 int main(int argc, const char** argv){
