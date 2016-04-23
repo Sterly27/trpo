@@ -1,8 +1,8 @@
 #include "../thirdparty/ctest.h"
 #include "../src/crypt_func.h"
 
-CTEST(distance_suite, NO_ERROR)
-{
+CTEST_SKIP(distance_suite, NO_ERROR)
+{	
 	char *str = "aaaaa";
 	int key = 3;
 	
