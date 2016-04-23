@@ -4,7 +4,7 @@ SRC_PATH = src
 
 root_include_dir := thirdparty
 
-all: program testilo
+all: program
 
 
 program: crypt_func.o func_crpt_vigi.o func_morze.o main
@@ -27,7 +27,5 @@ func_morze.o: ./src/func_morze.cpp
 	g++ -c ./src/func_morze.cpp -o ./obj/func_morze.o
 
 
-testilo:
-	g++ ./obj/crypt_func.o ./obj/func_morze.o ./test/main.cpp -Wall -o ./bin/tests/tests
 
 
