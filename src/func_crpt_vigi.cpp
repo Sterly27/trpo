@@ -8,7 +8,7 @@ for (i=0;i<strlen(a);i++)
     if((a[i] < 32) || (a[i] == 127)) {return 1;}  
 }
 for (i=0;i<strlen(b);i++){
- b[i]=b[i]-29;
+ b[i]=b[i]-31;
 }
 i=0;
  while(a[i]!=0){
@@ -20,7 +20,7 @@ i=0;
  i++;j++;
  }     
 for(i=0;b[i]!=0;i++)
-      b[i]+=29; 
+      b[i]+=31; 
       return 0;               
 }
 
@@ -33,18 +33,18 @@ for (i=0;i<strlen(a);i++)
     if((a[i] < 32) || (a[i] == 127)) {return 1;}  
 }
 for (i=0;i<strlen(b);i++){
- b[i]=b[i]-29;
+ b[i]=b[i]-31;
 }
 i=0;
  while(a[i]!=0){
  if(b[j]==0)
  j=0;
   a[i]=a[i]-b[j];
- if(a[i]<b[j]+29)
+ if(a[i]<b[j]+31)
  	a[i]=a[i]+95;
  i++;j++;
  }
 for(i=0;b[i]!=0;i++)
-      b[i]+=29;   
+      b[i]+=31;   
       return 0;             
 }
