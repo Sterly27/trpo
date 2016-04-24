@@ -1,8 +1,8 @@
 #include <string.h>
 
-const char ERROR_KEY = "EMPTY_KEY";
+const char ERROR_KEY[] = "EMPTY_KEY";
 const int NO_ERROR = 0;
-const char EMPTY_STR = "EMPTY_STRING";
+const char EMPTY_STR[] = "EMPTY_STRING";
 
 char crpt(char* string,int key)
 { 
