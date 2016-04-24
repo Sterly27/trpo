@@ -1,6 +1,6 @@
 #include <string.h>
 #include "../src/crypt_func.h"
-CTEST (vigi,test1){
+CTEST (vigi,test1ver1){
       // General operability
 char a[]=" !\"#$%%&'()*+,-./0123456789:;<=>?@ABC";
 char b[]=" !\"";
@@ -9,7 +9,7 @@ char d[]="!#%%$&(')+*,.-/102435768:9;=<>@?ACBDF";
 assert_str(d,a,"",1);
 }
 
-CTEST (vigi,test1'){
+CTEST (vigi,test1ver2){
       // General operability
 char a[]="DEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 char b[]=" !\"";
@@ -54,7 +54,7 @@ char d[]=")";
 assert_str(d,a,"",1);
 }
 
-CTEST (vigi,test5){
+CTEST (vigi,test5ver5){
       // General operability
 char a[]=" !\"#$%%&'()*+,-./0123456789:;<=>?@ABC";
 char b[]=" !\"";
@@ -63,7 +63,7 @@ devig (d,b);
 assert_str(a,d,"",1);
 }
 
-CTEST (vigi,test5'){
+CTEST (vigi,test5ver2){
       // General operability
 char a[]="DEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 char b[]=" !\"";
