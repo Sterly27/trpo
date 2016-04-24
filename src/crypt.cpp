@@ -45,13 +45,14 @@ int main(){
 							gets(str);
 							puts("Enter key:");
 							gets(key1);
-							if(vig(str,key1) > 0)
+							int result=vig(str,key1);
+							if(result > 0)
                      {
                         printf("Error: invalid symbols.");
                         break;
                      } else
                      {
-                         if(vig(str,key1) < 0)
+                         if(result < 0)
                          {
                             printf("Error: string/key is empty.");
                             break;                 
@@ -110,13 +111,14 @@ int main(){
 							gets(str);
 							printf("Enter key:\n");
 							gets(key1);
-							if(devig(str,key1) > 0)
+							int deresult=devig(str,key1);
+							if(deresult > 0)
                      {
                         printf("Error: invalid symbols.");
                         break;
                      } else
                      {
-                         if(devig(str,key1) < 0)
+                         if(deresult < 0)
                          {
                             printf("Error: string/key is empty.");
                             break;                 
