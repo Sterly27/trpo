@@ -1,7 +1,7 @@
 #include <string.h>
 #include "../src/crypt_func.h"
 
-CTEST (vigi,test1ver1){
+CTEST (vigi,test1pt1){
       // General operability
 char a[]=" !##$'&'()*+,-./0123456789:;<=>?@ABC";
 char b[]=" !\"";
@@ -10,7 +10,7 @@ char d[]="!#&$&*')+*,.-/102435768:9;=<>@?ACBDF";
 assert_str(d,a,"",1);
 }
 
-CTEST (vigi,test1ver2){
+CTEST (vigi,test1pt2){
       // General operability
 char a[]="DEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 char b[]=" !\"";
@@ -18,6 +18,25 @@ vig (a,b);
 char d[]="EGIHJLKMONPRQSUTVXWY[Z\\^]_a`bdcegfhjikmlnpoqsrtvuwyxz|{} ~!";
 assert_str(d,a,"",1);
 }
+
+CTEST (devigi,testde1pt1){
+      // General operability
+char a[]="!#&$&*')+*,.-/102435768:9;=<>@?ACBDF";
+char b[]=" !\"";
+char d[]=" !##$'&'()*+,-./0123456789:;<=>?@ABC";
+devig (a,b);
+assert_str(d,a,"",1);
+}
+
+CTEST (devigi,testde1pt2){
+      // General operability
+char a[]="DEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+char b[]=" !\"";
+char d[]="EGIHJLKMONPRQSUTVXWY[Z\\^]_a`bdcegfhjikmlnpoqsrtvuwyxz|{} ~!";
+devig (d,b);
+assert_str(a,d,"",1);
+}
+
 
 CTEST (vigi,test2){
       //double substraction
@@ -28,7 +47,7 @@ char d[]="'";
 assert_str(d,a,"",1);
 }
 
-CTEST (devigi,test3){
+CTEST (devigi,testde2){
       //double addition
 char a[]="'";
 char b[]="o";
@@ -37,7 +56,7 @@ char d[]="o";
 assert_str(d,a,"",1);
 }
 
-CTEST (vigi,test4){
+CTEST (vigi,test3){
       //max result of substraction
 char a[]="~";
 char b[]="~";
@@ -46,7 +65,7 @@ char d[]="~";
 assert_str(d,a,"",1);
 }
 
-CTEST (devigi,test3){
+CTEST (devigi,testde3){
       //max result of addition
 char a[]="~";
 char b[]="~";
@@ -55,25 +74,9 @@ char d[]="~";
 assert_str(d,a,"",1);
 }
 
-CTEST (devigi,test5ver5){
-      // General operability
-char a[]=" !\"#$%%&'()*+,-./0123456789:;<=>?@ABC";
-char b[]=" !\"";
-char d[]="!#%%$&(')+*,.-/102435768:9;=<>@?ACBDF";
-devig (d,b);
-assert_str(a,d,"",1);
-}
 
-CTEST (devigi,test5ver2){
-      // General operability
-char a[]="DEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
-char b[]=" !\"";
-char d[]="EGIHJLKMONPRQSUTVXWY[Z\\^]_a`bdcegfhjikmlnpoqsrtvuwyxz|{} ~!";
-devig (d,b);
-assert_str(a,d,"",1);
-}
 
-CTEST (vigi,test6){
+CTEST (vigi,test4){
       //max result of substraction
 char a[]="%%";
 char b[]="\"";
@@ -82,7 +85,7 @@ char d[]="(";
 assert_str(d,a,"",1);
 }
 
-CTEST (devigi,testde6){
+CTEST (devigi,testde4){
       //max result of addition
 char a[]="(";
 char b[]="\"";
