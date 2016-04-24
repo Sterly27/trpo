@@ -45,7 +45,18 @@ int main(){
 							gets(str);
 							puts("Enter key:");
 							gets(key1);
-							vig(str,key1);
+							if(vig(str,key1) > 0)
+                     {
+                        printf("Error: invalid symbols.");
+                        break;
+                     } else
+                     {
+                         if(vig(str,key1) < 0)
+                         {
+                            printf("Error: string/key is empty.");
+                            break;                 
+                         }    
+                     } 
 							puts("Encrypted text:");
 							puts(str);
 							gets(paus);
@@ -99,7 +110,18 @@ int main(){
 							gets(str);
 							printf("Enter key:\n");
 							gets(key1);
-							devig(str,key1);
+							if(devig(str,key1) > 0)
+                     {
+                        printf("Error: invalid symbols.");
+                        break;
+                     } else
+                     {
+                         if(devig(str,key1) < 0)
+                         {
+                            printf("Error: string/key is empty.");
+                            break;                 
+                         }    
+                     }               
 							printf("Decrypted text:\n");
 							puts(str);
 							gets(paus);

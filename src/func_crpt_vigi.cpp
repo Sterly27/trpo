@@ -1,11 +1,11 @@
 #include <string.h>
 
-void vig(char a[],char b[]){
+int vig(char a[],char b[]){
 int i=0,j=0;
-if((!strlen(a)) || (!strlen(b))) {printf("Error: string/key not introduced."); return;}
+if((!strlen(a)) || (!strlen(b))) {return -1;}
 for (i=0;i<strlen(a);i++)
 {
-    if((a[i] < 32) || (a[i] == 127)) {printf("Error: invalid symbols."); return;}  
+    if((a[i] < 32) || (a[i] == 127)) {return 1;}  
 }
 for (i=0;i<strlen(b);i++){
  b[i]=b[i]-29;
@@ -20,16 +20,17 @@ i=0;
  i++;j++;
  }     
 for(i=0;b[i]!=0;i++)
-      b[i]+=29;                
+      b[i]+=29; 
+      return 0;               
 }
 
 
-void devig(char a[],char b[]){
+int devig(char a[],char b[]){
 int i=0,j=0;
-if((!strlen(a)) || (!strlen(b))) {printf("Error: string/key not introduced."); return;}
+if((!strlen(a)) || (!strlen(b))) {return -1;}
 for (i=0;i<strlen(a);i++)
 {
-    if((a[i] < 32) || (a[i] == 127)) {printf("Error: invalid symbols."); return;}  
+    if((a[i] < 32) || (a[i] == 127)) {return 1;}  
 }
 for (i=0;i<strlen(b);i++){
  b[i]=b[i]-29;
@@ -44,5 +45,6 @@ i=0;
  i++;j++;
  }
 for(i=0;b[i]!=0;i++)
-      b[i]+=29;                
+      b[i]+=29;   
+      return 0;             
 }
