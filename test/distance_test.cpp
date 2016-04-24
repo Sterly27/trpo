@@ -3,8 +3,20 @@
 
 CTEST_SKIP(distance_suite, NO_ERROR)
 {	
-	char *str = "aaaaa";
+	char str[] = "1234567890+-qwertyuiop[]';?><}{[]:lkjhgfdsazxcvbnm,./%@!$^&*()_=";
 	int key = 3;
+	
+	char distance = crpt(str,key);
+
+	char expected_d = "1234567890+-1234567890[]';?><}{[]:ntboqvrflmihgedc,./%@!$^&*()_=";
+
+	ASSERT_STR(expected_d,distance);
+}
+
+CTEST(distance_suite, EMPTY_KEY)
+{
+	char str[] = "aaaaa";
+	int key;
 	
 	int distance = crpt(str,key);
 
@@ -13,25 +25,13 @@ CTEST_SKIP(distance_suite, NO_ERROR)
 	ASSERT_DBL_NEAR(expected_d,distance);
 }
 
-CTEST(distance_suite, ERROR)
+CTEST(distance_suite, EMPTY_STR)
 {
-	char *str;
-	int key;
-	
+	char str[] = "";
+	int key = 3;
 	int distance = crpt(str,key);
 
-	double expected_d = -1;
-
-	ASSERT_DBL_NEAR(expected_d,distance);
-}
-
-CTEST(distance_suite, EMPTY)
-{
-	char *str;
-	int key = 3;
-	int distance = crpt((char*)str,key);
-
-	double expected_d = 1;
+	double expected_d = 0;
 
 	ASSERT_DBL_NEAR(expected_d,distance);
 }
