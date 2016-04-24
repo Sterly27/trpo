@@ -1,7 +1,7 @@
 #include "../thirdparty/ctest.h"
 #include "../src/crypt_func.h"
 
-CTEST_SKIP(distance_suite, NO_ERROR)
+CTEST(distance_suite, NO_ERROR)
 {	
 	char str[] = "1234567890+-qwertyuiop[]';?><}{[]:lkjhgfdsazxcvbnm,./%@!$^&*()_=";
 	int key = 3;
