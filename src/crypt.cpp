@@ -61,7 +61,6 @@ int main(){
 								break;                 
 							} 
 							cout<<"Encrypted text:\n" << str;
-							
 							cin>>paus;
 							break;
 						case 2://-------------------CRYPT_CEASER------------------//
