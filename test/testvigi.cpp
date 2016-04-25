@@ -43,13 +43,13 @@ CTEST (vigi,test2){
 char a[]="o";
 char b[]="o";
 vig (a,b);
-char d[]="'";
+char d[]="`";
 assert_str(d,a,"",1);
 }
 
 CTEST (devigi,testde2){
       //double addition
-char a[]="'";
+char a[]="`";
 char b[]="o";
 devig (a,b);
 char d[]="o";
@@ -78,7 +78,7 @@ assert_str(d,a,"",1);
 
 CTEST (vigi,test4){
       //max result of substraction
-char a[]="%%";
+char a[]="%";
 char b[]="\"";
 vig (a,b);
 char d[]="(";
@@ -90,6 +90,6 @@ CTEST (devigi,testde4){
 char a[]="(";
 char b[]="\"";
 devig (a,b);
-char d[]="%%";
+char d[]="%";
 assert_str(d,a,"",1);
 }
