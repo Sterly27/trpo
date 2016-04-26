@@ -43,7 +43,7 @@ CTEST(distance_suite, NO_ERROR_DECRYPT)
 	
 	crpt(str,key);
 
-	char expected_d = "qwertyuiopasdfghjklzxcvbnm1234567890";
+	char expected_d[] = "qwertyuiopasdfghjklzxcvbnm1234567890";
 
 	assert_str(expected_d,str,"a",1);
 }
