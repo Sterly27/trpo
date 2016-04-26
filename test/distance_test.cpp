@@ -1,7 +1,7 @@
 #include "../thirdparty/ctest.h"
 #include "../src/crypt_func.h"
 //crypt
-CTEST(distance_suite, NO_ERROR:CRYPT)
+CTEST(distance_suite, NO_ERROR_CRYPT)
 {	
 	char str[] = "1234567890+-qwertyuiop[]';?><}{[]:lkjhgfdsazxcvbnm,./%@!$^&*()_=";
 	int key = 3;
@@ -36,7 +36,7 @@ CTEST(distance_suite, EMPTY_STR)
 	ASSERT_DBL_NEAR(expected_d,distance);
 }
 //decrypt
-CTEST(distance_suite, NO_ERROR:DECRYPT)
+CTEST(distance_suite, NO_ERROR_DECRYPT)
 {	
 	char str[] = "2107654;:3(.rtfqwzvjlsX^$8<=?~xX^9ohikdegpby{`uamn/-,&C"']%)+*\>";
 	int key = 3;
