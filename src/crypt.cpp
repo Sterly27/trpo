@@ -9,7 +9,7 @@ using namespace std;
 const int N=1024;
 
 int main(){
-	int menu,exit=0,i,key2;
+	int menu,exit=0,i,key2,check;
 	char str[N],*strm,key1[N];	
 	 
 	//---------------------------------------------MENU----------------------------------------//
@@ -28,6 +28,7 @@ int main(){
 	    cout<<"2)Decrypt\n\n";
 	    cout<<"3)Exit\n\n";
 		scanf("%i",&menu);
+		if(menu>3&&menu!=45) menu=0;
 		switch(menu){
 			case 1:
 				while(menu!=4){
@@ -38,6 +39,7 @@ int main(){
 					cout<<"3)Morze\n\n";
 					cout<<"4)Back\n\n";
 					scanf("%i",&menu);
+					if(menu>3&&menu!=45) menu=0;
 					switch(menu){
 						case 1://--------------------CRYPT_VIGI-------------------//
 							system("cls||clear");
@@ -68,7 +70,21 @@ int main(){
 							cin.getline(str,N);
 							cout<<"Enter key:\n";
 							scanf("%i",&key2);
-							crpt(str,key2);
+							check=crpt(str,key2);
+							if(check < 0){
+								system("cls||clear");
+								cout<<"Error: invalid symbols.";
+								cin.get();
+								cin.get();
+								break;
+							} 
+							else if(check > 0){
+								system("cls||clear");
+								cout<<"Error: string/key is empty.";
+								cin.get();
+								cin.get();
+								break;                 
+							}
 							cout<<"Encrypted text:\n" << str;
 							cin.get();
 							cin.get();
@@ -90,6 +106,7 @@ int main(){
 							system("cls||clear");
 							cout<<"This menu item does not exist.\n\n";
 							cin.get();
+							cin.get();
 					}
 				}
 				break;
@@ -102,6 +119,7 @@ int main(){
 					cout<<"3)Morze\n\n";
 					cout<<"4)Back\n\n";
 					scanf("%i",&menu);
+					if(menu>3&&menu!=45) menu=0;
 					switch(menu){
 						case 1://-------------------DECRYPT_VIGI------------------//
 							system("cls||clear");
@@ -132,7 +150,21 @@ int main(){
 							cin.getline(str,N);
 							cout<<"Enter key:\n";
 							scanf("%i",&key2);
-							crpt(str,key2);
+							check=crpt(str,key2);
+							if(check < 0){
+								system("cls||clear");
+								cout<<"Error: invalid symbols.";
+								cin.get();
+								cin.get();
+								break;
+							} 
+							else if(check > 0){
+								system("cls||clear");
+								cout<<"Error: string/key is empty.";
+								cin.get();
+								cin.get();
+								break;                 
+							}
 							cout<<"Decrypted text:\n" << str;
 							cin.get();
 							cin.get();
@@ -152,6 +184,7 @@ int main(){
 							system("cls||clear");
 							cout<<"This menu item does not exist.\n\n";
 							cin.get();
+							cin.get();
 					}
 				}
 				break;
@@ -163,10 +196,12 @@ int main(){
 			    system("cls||clear");
 				cout<<"Group IP-513 thanks you for using our software!";
 				cin.get();
+				cin.get();
 				break;
 			default://------------------------OTHER_OPTIONS--------------------------//
 				system("cls||clear");
 				cout<<"This menu item does not exist.\n\n";
+				cin.get();
 				cin.get();
 				break;	
 		}
