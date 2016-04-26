@@ -105,7 +105,7 @@ assert_dbl_near(d,i,0.5,"",1);
 
 
 
-CTEST (devigi,bd_er1)){
+CTEST (devigi,bd_er1){
 char a[]="фывапро";
 char b[]="\"";
 devig (a,b);
