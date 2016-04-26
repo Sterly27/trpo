@@ -95,7 +95,7 @@ assert_str(d,a,"",1);
 }
 
 
-CTEST (vigi,bad_data(error_1)){
+CTEST (vigi,bd_er1){
 char a[]="фывапро";
 char b[]="\"";
 int i=vig (a,b);
@@ -105,7 +105,7 @@ assert_dbl_near(d,i);
 
 
 
-CTEST (devigi,bad_data(error_1)){
+CTEST (devigi,bd_er1)){
 char a[]="фывапро";
 char b[]="\"";
 devig (a,b);
@@ -114,7 +114,7 @@ int d=1;
 assert_dbl_near(d,i);
 }
 
-CTEST (vigi,bad_data(error_-_1)){
+CTEST (vigi,bd_er_minus1){
 char a[]="";
 char b[]="\"";
 devig (a,b);
@@ -123,7 +123,7 @@ int d=-1;
 assert_dbl_near(d,i);
 }
 
-CTEST (devigi,bad_data(error_-_1)){
+CTEST (devigi,bd_er_minus1){
 char a[]="фывапро";
 char b[]="";
 devig (a,b);
