@@ -100,7 +100,7 @@ char a[]="фывапро";
 char b[]="\"";
 int i=vig (a,b);
 int d=1;
-assert_dbl_near(d,i);
+assert_dbl_near(d,i,0.5,"",1);
 }
 
 
@@ -111,7 +111,7 @@ char b[]="\"";
 devig (a,b);
 int i = devig(a,b);
 int d=1;
-assert_dbl_near(d,i);
+assert_dbl_near(d,i,0.5,"",1);
 }
 
 CTEST (vigi,bd_er_minus1){
@@ -120,7 +120,7 @@ char b[]="\"";
 devig (a,b);
 int i = vig(a,b);
 int d=-1;
-assert_dbl_near(d,i);
+assert_dbl_near(d,i,0.5,"",1);
 }
 
 CTEST (devigi,bd_er_minus1){
@@ -129,6 +129,6 @@ char b[]="";
 devig (a,b);
 int i = devig(a,b);
 int d=-1;
-assert_dbl_near(d,i);
+assert_dbl_near(d,i,0.5,"",1);
 }
 
