@@ -3,14 +3,14 @@
 //crypt
 CTEST(distance_suite, NO_ERROR_CRYPT)
 {	
-	char str[] = "1234567890+-qwertyuiop[]';?><}{[]:lkjhgfdsazxcvbnm,./%@!$^&*()_=";
+	char str[] = "qwertyuiopasdfghjklzxcvbnm1234567890";
 	int key = 3;
 	
 	crpt(str,key);
 
-	char expected_d[] = "2107654;:3(.rtfqwzvjlsX^$8<=?~xX^9ohikdegpby{`uamn/-,&C"']%)+*\>";
+	char expected_d[] = "rtfqwzvjlsbpgedkihoy{`uamn2107654;:3";
 
-	ASSERT_STR(expected_d,str);
+	assert_str(expected_d,str,"a",1);
 }
 
 CTEST(distance_suite, EMPTY_KEY)
@@ -38,12 +38,12 @@ CTEST(distance_suite, EMPTY_STR)
 //decrypt
 CTEST(distance_suite, NO_ERROR_DECRYPT)
 {	
-	char str[] = "2107654;:3(.rtfqwzvjlsX^$8<=?~xX^9ohikdegpby{`uamn/-,&C"']%)+*\>";
+	char str[] = "rtfqwzvjlsbpgedkihoy{`uamn2107654;:3";
 	int key = 3;
 	
 	crpt(str,key);
 
-	char expected_d = "1234567890+-qwertyuiop[]';?><}{[]:lkjhgfdsazxcvbnm,./%@!$^&*()_=";
+	char expected_d = "qwertyuiopasdfghjklzxcvbnm1234567890";
 
-	ASSERT_STR(expected_d,str);
+	assert_str(expected_d,str,"a",1);
 }
