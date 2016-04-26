@@ -20,7 +20,7 @@ CTEST(distance_suite, EMPTY_KEY)
 	
 	int distance = crpt(str,key);
 
-	double expected_d = 1;
+	double expected_d = -1;
 
 	ASSERT_DBL_NEAR(expected_d,distance);
 }
