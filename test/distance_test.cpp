@@ -1,14 +1,14 @@
 #include "../thirdparty/ctest.h"
 #include "../src/crypt_func.h"
-
-CTEST(distance_suite, NO_ERROR)
+//crypt
+CTEST(distance_suite, NO_ERROR:CRYPT)
 {	
 	char str[] = "1234567890+-qwertyuiop[]';?><}{[]:lkjhgfdsazxcvbnm,./%@!$^&*()_=";
 	int key = 3;
 	
 	char distance = crpt(str,key);
 
-	char expected_d = "1234567890+-1234567890[]';?><}{[]:ntboqvrflmihgedc,./%@!$^&*()_=";
+	char expected_d = "2107654;:3(.rtfqwzvjlsX^$8<=?~xX^9ohikdegpby{`uamn/-,&C"']%)+*\>";
 
 	ASSERT_STR(expected_d,distance);
 }
@@ -34,4 +34,16 @@ CTEST(distance_suite, EMPTY_STR)
 	double expected_d = 1;
 
 	ASSERT_DBL_NEAR(expected_d,distance);
+}
+//decrypt
+CTEST(distance_suite, NO_ERROR:DECRYPT)
+{	
+	char str[] = "2107654;:3(.rtfqwzvjlsX^$8<=?~xX^9ohikdegpby{`uamn/-,&C"']%)+*\>";
+	int key = 3;
+	
+	char distance = crpt(str,key);
+
+	char expected_d = "1234567890+-qwertyuiop[]';?><}{[]:lkjhgfdsazxcvbnm,./%@!$^&*()_=";
+
+	ASSERT_STR(expected_d,distance);
 }
