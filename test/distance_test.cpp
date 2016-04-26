@@ -6,11 +6,11 @@ CTEST(distance_suite, NO_ERROR_CRYPT)
 	char str[] = "1234567890+-qwertyuiop[]';?><}{[]:lkjhgfdsazxcvbnm,./%@!$^&*()_=";
 	int key = 3;
 	
-	char distance = crpt(str,key);
+	crpt(str,key);
 
-	char expected_d = "2107654;:3(.rtfqwzvjlsX^$8<=?~xX^9ohikdegpby{`uamn/-,&C"']%)+*\>";
+	char expected_d[] = "2107654;:3(.rtfqwzvjlsX^$8<=?~xX^9ohikdegpby{`uamn/-,&C"']%)+*\>";
 
-	ASSERT_STR(expected_d,distance);
+	ASSERT_STR(expected_d,str);
 }
 
 CTEST(distance_suite, EMPTY_KEY)
@@ -41,9 +41,9 @@ CTEST(distance_suite, NO_ERROR_DECRYPT)
 	char str[] = "2107654;:3(.rtfqwzvjlsX^$8<=?~xX^9ohikdegpby{`uamn/-,&C"']%)+*\>";
 	int key = 3;
 	
-	char distance = crpt(str,key);
+	crpt(str,key);
 
 	char expected_d = "1234567890+-qwertyuiop[]';?><}{[]:lkjhgfdsazxcvbnm,./%@!$^&*()_=";
 
-	ASSERT_STR(expected_d,distance);
+	ASSERT_STR(expected_d,str);
 }
