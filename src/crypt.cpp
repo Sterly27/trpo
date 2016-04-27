@@ -39,7 +39,7 @@ int main(){
 					cout<<"3)Morze\n\n";
 					cout<<"4)Back\n\n";
 					scanf("%i",&menu);
-					if(menu>3&&menu!=45) menu=0;
+					if(menu>4&&menu!=45) menu=0;
 					switch(menu){
 						case 1://--------------------CRYPT_VIGI-------------------//
 							system("cls||clear");
@@ -119,7 +119,7 @@ int main(){
 					cout<<"3)Morze\n\n";
 					cout<<"4)Back\n\n";
 					scanf("%i",&menu);
-					if(menu>3&&menu!=45) menu=0;
+					if(menu>4&&menu!=45) menu=0;
 					switch(menu){
 						case 1://-------------------DECRYPT_VIGI------------------//
 							system("cls||clear");

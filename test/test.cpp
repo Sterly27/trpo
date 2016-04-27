@@ -27,7 +27,7 @@ char* c=new char[strlen(a)*10];
 morze(a,c);
 assert_str(b,c,"a",1);
 }
-CTEST(morze, debil){
+CTEST(morze, test4){
 char b[]="~Хелло/*--=():%;№&*^$#@";
 char a[]="ERROR";
 char* c=new char[strlen(a)*10];
