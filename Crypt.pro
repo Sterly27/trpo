@@ -12,11 +12,11 @@ TARGET = Crypt
 TEMPLATE = app
 
 
-SOURCES += .\src\main.cpp \
-    .\src\crypt.cpp \
-   .\src\crypt_func.cpp \
-   .\src\func_crpt_vigi.cpp \
-    .\src\work_with_file.cpp \
+SOURCES += src/main.cpp \
+    src/crypt.cpp \
+    src/crypt_func.cpp \
+    src/func_crpt_vigi.cpp \
+    src/work_with_file.cpp \
     src/func_morze.cpp
 
 HEADERS  += \
