@@ -6,8 +6,12 @@ if((!strlen(a)) || (!strlen(b))) {return -1;}
 for (i=0;i<strlen(a);i++)
 {
     if((a[i] < 32) || (a[i] == 127)) {return 1;}
+}
+for (i=0;i<strlen(b);i++)
+{
     if((b[i] < 32) || (b[i] == 127)) {return 1;}
 }
+
 for (i=0;i<strlen(b);i++){
  b[i]=b[i]-31;
 }
