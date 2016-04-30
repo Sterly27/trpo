@@ -8,6 +8,8 @@
 #include <QMessageBox>
 #include <QWidget>
 #include <QApplication>
+#include <QByteArray>
+#include <string.h>
 
 Crypt::Crypt(QWidget *parent) :
     QMainWindow(parent),
@@ -16,9 +18,10 @@ Crypt::Crypt(QWidget *parent) :
     ui->setupUi(this);
 }
 
-int vsnCrypt=0, check,check1=0, check2=0, check3=0,transformer=0,keyc;
-char str[4096], str2[100], *strm;
+int vsnCrypt=0, check=0, check1=0, check2=0, check3=0, transformer=0, keyc;
+char *str, *str_key, *str_morze;
 QString st,st2,k;
+QByteArray itog;
 
 Crypt::~Crypt()
 {
@@ -29,41 +32,50 @@ void Crypt::on_plainTextEdit_textChanged()
 {
     if(!ui->plainTextEdit->toPlainText().isEmpty()) check1=1;
     else check1=0;
-    if(transformer&&check1==1&&check2==1&&check3==1||transformer&&vsnCrypt==2&&check1==1&&check2==1) ui->ok->setEnabled(true);
-    else ui->ok->setEnabled(false);
 
+    if(transformer && check1 && check2 && check3 || transformer && vsnCrypt==2 && check1 && check2) ui->enter->setEnabled(true);
+    else ui->enter->setEnabled(false);
+
+}
+
+void Crypt::on_comboBox_1_activated(int index)
+{
+   if(index==0){transformer=0;}
+
+   if(index==1){transformer=1;}
+
+   if(index==2){transformer=2;}
+
+   if(transformer && check1 && check2 && check3 || transformer && vsnCrypt==2 && check1 && check2) ui->enter->setEnabled(true);
+   else ui->enter->setEnabled(false);
 }
 
 void Crypt::on_comboBox_2_activated(int index)
 {
-   if(index==0){transformer=0; ui->ok->setEnabled(false);}
-   if(index==1){transformer=1;}
-   if(index==2){transformer=2;}
-   if(transformer&&check1==1&&check2==1&&check3==1||transformer&&vsnCrypt==2&&check1==1&&check2==1) ui->ok->setEnabled(true);
-   else ui->ok->setEnabled(false);
-}
+     ui->lineEdit->clear();
 
-void Crypt::on_comboBox_activated(int index)
-{
-    if(index==0){check2=0;ui->action->setEnabled(false);}
-    if(index==1){vsnCrypt=1; ui->lineEdit->setMaxLength(100); check2=1; ui->action->setEnabled(true);}
-    if(index==2){vsnCrypt=2; check2=1; ui->lineEdit->setMaxLength(0);}
-    if(index==3){vsnCrypt=3; ui->lineEdit->setMaxLength(3); check2=1;ui->action->setEnabled(true);}
-    if(index==1||index==3) ui->lineEdit->setEnabled(true);
-    else{ui->lineEdit->setEnabled(false); ui->action->setEnabled(false);}
-    if(transformer&&check1==1&&check2==1&&check3==1||transformer&&vsnCrypt==2&&check1==1&&check2==1) ui->ok->setEnabled(true);
-    else ui->ok->setEnabled(false);
+    if(index==0){check2=0; ui->openKey->setEnabled(false);}
+
+    if(index==1){vsnCrypt=1; ui->lineEdit->setEnabled(true); ui->lineEdit->setMaxLength(100); check2=1; ui->openKey->setEnabled(true);}
+
+    if(index==2){vsnCrypt=2; ui->lineEdit->setEnabled(false); check2=1; ui->openKey->setEnabled(false);}
+
+    if(index==3){vsnCrypt=3; ui->lineEdit->setEnabled(true); ui->lineEdit->setMaxLength(3); check2=1; ui->openKey->setEnabled(true);}
+
+    if(transformer && check1 && check2 && check3 || transformer && vsnCrypt==2 && check1 && check2) ui->enter->setEnabled(true);
+    else ui->enter->setEnabled(false);
 }
 
 void Crypt::on_lineEdit_textChanged(const QString &arg1)
 {
     if(!arg1.isEmpty()) check3=1;
     else check3=0;
-    if(transformer&&check1==1&&check2==1&&check3==1||transformer&&vsnCrypt==2&&check1==1&&check2==1) ui->ok->setEnabled(true);
-    else ui->ok->setEnabled(false);
+
+    if(transformer && check1 && check2 && check3 || transformer && vsnCrypt==2 && check1 && check2) ui->enter->setEnabled(true);
+    else ui->enter->setEnabled(false);
 }
 
-void Crypt::on_action_5_triggered()
+void Crypt::on_openText_triggered()
 {
   QString filename = QFileDialog::getOpenFileName(0, "Открытие файла","..\\","*.crpt *.txt");
   QFile file(filename);
@@ -74,7 +86,7 @@ void Crypt::on_action_5_triggered()
   file.close();
 }
 
-void Crypt::on_action_triggered()
+void Crypt::on_openKey_triggered()
 {
     QString filenamekey = QFileDialog::getOpenFileName(0, "Открытие файла","..\\","*.key *.txt");
     QFile key(filenamekey);
@@ -85,97 +97,112 @@ void Crypt::on_action_triggered()
     key.close();
 }
 
-void Crypt::on_ok_clicked()
-{
-    QFile file(".\\text.crpt");
-    file.open(QIODevice::WriteOnly);
-    QTextStream outtext(&file);
-        outtext << ui->plainTextEdit->toPlainText();
-        file.flush();
-        file.close();
+void Crypt::on_enter_clicked()
+{    
+    st=ui->plainTextEdit->toPlainText();
 
-        file.open(QFile::ReadOnly);
-        file.readLine(str, sizeof(str));
-        file.flush();
-        file.close();
-
-        QFile key(".\\key.key");
-        key.open(QIODevice::WriteOnly);
-        QTextStream outkey(&key);
-            outkey << ui->lineEdit->text();
-            key.flush();
-            key.close();
-
-    if(vsnCrypt==1){
-            key.open(QFile::ReadOnly);
-            key.readLine(str2, sizeof(str2));
-            key.flush();
-            key.close();
-        if(transformer==1){
-            check=vig(str,str2);
-            if(check < 0){
-                QMessageBox *msg=new QMessageBox;
-                msg->setObjectName("error1");
-                msg->setWindowTitle("Error: string/key is empty.");
-                msg->setText("You have not entered text or key");
-                msg->setButtonText(1,"Cancel");
-                msg->exec();
-           }
-           if(check > 0){
-               QMessageBox *msg=new QMessageBox;
-               msg->setObjectName("error2");
-               msg->setWindowTitle("Error: invalid characters.");
-               msg->setText("You entered invalid characters");
-               msg->setButtonText(1,"Cancel");
-               msg->exec();
-         }
-        else ui->plainTextEdit_2->setPlainText(str);
-        }
+    if(st.size()>10000){
+        QMessageBox *msg=new QMessageBox;
+        msg->setObjectName("error1");
+        msg->setWindowTitle("Error: invalid number of characters!");
+        msg->setText("The maximum string length ten thousand characters.");
+        msg->setButtonText(1,"Cancel");
+        msg->exec();
     }
+    else{
 
-    if(vsnCrypt==2){
-        if(transformer==1){
-        strm=new char [strlen(str)*10];
-        morze(str,strm);
-        if(!strcmp(strm,"ERROR")){
-            QMessageBox *msg=new QMessageBox;
-            msg->setObjectName("error2");
-            msg->setWindowTitle("Error: invalid characters.");
-            msg->setText("You entered invalid characters");
-            msg->setButtonText(1,"Cancel");
-            msg->exec();
-           }
-        else ui->plainTextEdit_2->setPlainText(strm);
-        }
-    }
+        itog=st.toLocal8Bit();
+        str = new char[itog.size()];
+        strcpy(str, itog.data());
 
-   if(vsnCrypt==3){
-          keyc=ui->lineEdit->text().toInt();
-     if(transformer==1){
-         check=crpt(str,keyc);
-             if(check < 0){
-                 QMessageBox *msg=new QMessageBox;
-                 msg->setObjectName("error1");
-                 msg->setWindowTitle("Error: string/key is empty.");
-                 msg->setText("You have not entered text or key");
-                 msg->setButtonText(1,"Cancel");
-                 msg->exec();
+        if(vsnCrypt==1){
+            k=ui->lineEdit->text();
+            itog=k.toLocal8Bit();
+            str_key = new char[itog.size()];
+            strcpy(str_key, itog.data());
+
+            if(transformer==1){
+
+                check=vig(str,str_key);
+
+                if(check < 0){
+                    QMessageBox *msg=new QMessageBox;
+                    msg->setObjectName("error2");
+                    msg->setWindowTitle("Error: string/key is empty!");
+                    msg->setText("You have not entered text or key.");
+                    msg->setButtonText(1,"Cancel");
+                    msg->exec();
+                }
+
+                if(check > 0){
+                    QMessageBox *msg=new QMessageBox;
+                    msg->setObjectName("error3");
+                    msg->setWindowTitle("Error: invalid characters!");
+                    msg->setText("You entered invalid characters.");
+                    msg->setButtonText(1,"Cancel");
+                    msg->exec();
+                }
+                if(check == 0) ui->plainTextEdit_2->setPlainText(str);
             }
-            if(check > 0){
-                QMessageBox *msg=new QMessageBox;
-                msg->setObjectName("error2");
-                msg->setWindowTitle("Error: invalid characters.");
-                msg->setText("You entered invalid characters");
-                msg->setButtonText(1,"Cancel");
-                msg->exec();
-          }
-          else ui->plainTextEdit_2->setPlainText(str);
+        }
+
+        if(vsnCrypt==2){
+
+            if(transformer==1){
+
+                str_morze=new char [strlen(str)*10];
+                morze(str,str_morze);
+
+                if(!strcmp(str_morze,"ERROR")){
+                    QMessageBox *msg=new QMessageBox;
+                    msg->setObjectName("error4");
+                    msg->setWindowTitle("Error: invalid characters!");
+                    msg->setText("You entered invalid characters.");
+                    msg->setButtonText(1,"Cancel");
+                    msg->exec();
+                }
+                else ui->plainTextEdit_2->setPlainText(str_morze);
+            }
+        }
+
+        if(vsnCrypt==3){
+            keyc=ui->lineEdit->text().toInt();
+
+            if(transformer==1){
+
+                check=crpt(str,keyc);
+
+                if(check < 0){
+                    QMessageBox *msg=new QMessageBox;
+                    msg->setObjectName("error5");
+                    msg->setWindowTitle("Error: string/key is empty!");
+                    msg->setText("You have not entered text or key.");
+                    msg->setButtonText(1,"Cancel");
+                    msg->exec();
+                }
+
+                if(check > 0){
+                    QMessageBox *msg=new QMessageBox;
+                    msg->setObjectName("error6");
+                    msg->setWindowTitle("Error: invalid characters!");
+                    msg->setText("You entered invalid characters.");
+                    msg->setButtonText(1,"Cancel");
+                    msg->exec();
+                }
+                if(check == 0) ui->plainTextEdit_2->setPlainText(str);
+            }
         }
     }
 }
 
-void Crypt::on_Close_clicked()
+void Crypt::on_clear_clicked()
+{
+  ui->plainTextEdit->clear();
+  ui->plainTextEdit_2->clear();
+  ui->lineEdit->clear();
+}
+
+void Crypt::on_close_clicked()
 {
     close();
 }
-

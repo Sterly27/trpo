@@ -5,11 +5,13 @@
   <property name="enabled">
    <bool>true</bool>
   </property>
-  <property name="maximumSize">
-   <size>
-    <width>16777215</width>
-    <height>16777211</height>
-   </size>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>721</width>
+    <height>507</height>
+   </rect>
   </property>
   <property name="font">
    <font>
@@ -23,31 +25,16 @@
   <property name="windowTitle">
    <string>Crypt</string>
   </property>
-  <property name="autoFillBackground">
-   <bool>false</bool>
-  </property>
   <widget class="QWidget" name="centralWidget">
    <property name="enabled">
     <bool>true</bool>
    </property>
+   <property name="font">
+    <font>
+     <italic>false</italic>
+    </font>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0" colspan="7">
-     <widget class="QPlainTextEdit" name="plainTextEdit_2">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="6">
-     <widget class="QPushButton" name="Close">
-      <property name="text">
-       <string>Выход</string>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="5">
      <widget class="QLineEdit" name="lineEdit">
       <property name="enabled">
@@ -58,15 +45,15 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="4">
-     <widget class="QLabel" name="label_2">
+    <item row="1" column="0">
+     <widget class="QLabel" name="label">
       <property name="text">
-       <string>Введите ключ:</string>
+       <string>Тип преобразования:</string>
       </property>
      </widget>
     </item>
     <item row="1" column="3">
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="comboBox_2">
       <item>
        <property name="text">
         <string>Не выбран</string>
@@ -89,6 +76,13 @@
       </item>
      </widget>
     </item>
+    <item row="3" column="6">
+     <widget class="QPushButton" name="close">
+      <property name="text">
+       <string>Выход</string>
+      </property>
+     </widget>
+    </item>
     <item row="1" column="2">
      <widget class="QLabel" name="label_3">
       <property name="text">
@@ -96,11 +90,30 @@
       </property>
      </widget>
     </item>
+    <item row="1" column="4">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Введите ключ:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="7">
+     <widget class="QPlainTextEdit" name="plainTextEdit">
+      <property name="font">
+       <font>
+        <italic>false</italic>
+       </font>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
     <item row="1" column="1">
-     <widget class="QComboBox" name="comboBox_2">
+     <widget class="QComboBox" name="comboBox_1">
       <item>
        <property name="text">
-        <string>Не выбрано</string>
+        <string>Не выбран</string>
        </property>
       </item>
       <item>
@@ -115,8 +128,18 @@
       </item>
      </widget>
     </item>
+    <item row="2" column="0" colspan="7">
+     <widget class="QPlainTextEdit" name="plainTextEdit_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
     <item row="1" column="6">
-     <widget class="QPushButton" name="ok">
+     <widget class="QPushButton" name="enter">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -134,17 +157,10 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label">
+    <item row="3" column="0" colspan="6">
+     <widget class="QPushButton" name="clear">
       <property name="text">
-       <string>Тип преобразования:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0" colspan="7">
-     <widget class="QPlainTextEdit" name="plainTextEdit">
-      <property name="readOnly">
-       <bool>false</bool>
+       <string>Очистить</string>
       </property>
      </widget>
     </item>
@@ -155,7 +171,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
+     <width>721</width>
      <height>21</height>
     </rect>
    </property>
@@ -168,7 +184,8 @@
     <property name="title">
      <string>Файл</string>
     </property>
-    <addaction name="action_5"/>
+    <addaction name="openText"/>
+    <addaction name="openKey"/>
     <addaction name="action"/>
    </widget>
    <widget class="QMenu" name="menu_5">
@@ -181,7 +198,7 @@
    <addaction name="menu_5"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="action_5">
+  <action name="openText">
    <property name="checkable">
     <bool>false</bool>
    </property>
@@ -227,7 +244,7 @@
     <string>О программе...</string>
    </property>
   </action>
-  <action name="action">
+  <action name="openKey">
    <property name="checkable">
     <bool>false</bool>
    </property>
@@ -236,6 +253,11 @@
    </property>
    <property name="text">
     <string>Открыть ключ...</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>Сохранить...</string>
    </property>
   </action>
  </widget>

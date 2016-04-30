@@ -2,10 +2,6 @@
 #define CRYPT_H
 #include <QMainWindow>
 
-void print(char* fileName,char* str);
-
-void scan(char* fileName,char* str,int n);
-
 int crpt(char* string,int key);
 
 int vig(char a[],char b[]);
@@ -31,19 +27,21 @@ public:
 private slots:
     void on_plainTextEdit_textChanged();
 
-    void on_Close_clicked();
+    void on_close_clicked();
 
-    void on_comboBox_activated(int index);
+    void on_comboBox_1_activated(int index);
 
-    void on_action_5_triggered();
+    void on_comboBox_2_activated(int index);
 
-    void on_ok_clicked();
+    void on_openText_triggered();
+
+    void on_enter_clicked();
 
     void on_lineEdit_textChanged(const QString &arg1);
 
-    void on_action_triggered();
+    void on_openKey_triggered();
 
-    void on_comboBox_2_activated(int index);
+    void on_clear_clicked();
 
 private:
     Ui::Crypt *ui;
