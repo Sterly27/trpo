@@ -154,6 +154,31 @@ void Crypt::on_enter_clicked()
                 if(check == 0) ui->plainTextEdit_2->setPlainText(str);
 
             }
+
+            if(transformer==2){
+
+                check=devig(str,str_key);
+
+                if(check < 0){
+                    QMessageBox *msg=new QMessageBox;
+                    msg->setObjectName("error4");
+                    msg->setWindowTitle("Error: string/key is empty!");
+                    msg->setText("You have not entered text or key.");
+                    msg->setButtonText(1,"Cancel");
+                    msg->exec();
+                }
+
+                if(check > 0){
+                    QMessageBox *msg=new QMessageBox;
+                    msg->setObjectName("error5");
+                    msg->setWindowTitle("Error: invalid characters!");
+                    msg->setText("You entered invalid characters.");
+                    msg->setButtonText(1,"Cancel");
+                    msg->exec();
+                }
+                if(check == 0) ui->plainTextEdit_2->setPlainText(str);
+
+            }
             delete(str);
             delete(str_key);
         }
@@ -167,16 +192,32 @@ void Crypt::on_enter_clicked()
 
                 if(!strcmp(str_morze,"ERROR")){
                     QMessageBox *msg=new QMessageBox;
-                    msg->setObjectName("error4");
+                    msg->setObjectName("error6");
                     msg->setWindowTitle("Error: invalid characters!");
                     msg->setText("You entered invalid characters.");
                     msg->setButtonText(1,"Cancel");
                     msg->exec();
                 }
                 else ui->plainTextEdit_2->setPlainText(str_morze);
+
+                delete(str_morze);
+            }
+
+            if(transformer==2){
+
+                demorze(str);
+
+                if(str[0]==0){
+                    QMessageBox *msg=new QMessageBox;
+                    msg->setObjectName("error7");
+                    msg->setWindowTitle("Error: invalid characters!");
+                    msg->setText("You entered invalid characters.");
+                    msg->setButtonText(1,"Cancel");
+                    msg->exec();
+                }
+                else ui->plainTextEdit_2->setPlainText(str);
             }
             delete(str);
-            delete(str_morze);
         }
 
         if(vsnCrypt==3){
@@ -188,7 +229,7 @@ void Crypt::on_enter_clicked()
 
                 if(check < 0){
                     QMessageBox *msg=new QMessageBox;
-                    msg->setObjectName("error5");
+                    msg->setObjectName("error8");
                     msg->setWindowTitle("Error: string/key is empty!");
                     msg->setText("You have not entered text or key.");
                     msg->setButtonText(1,"Cancel");
@@ -197,7 +238,31 @@ void Crypt::on_enter_clicked()
 
                 if(check > 0){
                     QMessageBox *msg=new QMessageBox;
-                    msg->setObjectName("error6");
+                    msg->setObjectName("error9");
+                    msg->setWindowTitle("Error: invalid characters!");
+                    msg->setText("You entered invalid characters.");
+                    msg->setButtonText(1,"Cancel");
+                    msg->exec();
+                }
+                if(check == 0) ui->plainTextEdit_2->setPlainText(str);
+            }
+
+            if(transformer==2){
+
+                check=crpt(str,keyc);
+
+                if(check < 0){
+                    QMessageBox *msg=new QMessageBox;
+                    msg->setObjectName("error10");
+                    msg->setWindowTitle("Error: string/key is empty!");
+                    msg->setText("You have not entered text or key.");
+                    msg->setButtonText(1,"Cancel");
+                    msg->exec();
+                }
+
+                if(check > 0){
+                    QMessageBox *msg=new QMessageBox;
+                    msg->setObjectName("error11");
                     msg->setWindowTitle("Error: invalid characters!");
                     msg->setText("You entered invalid characters.");
                     msg->setButtonText(1,"Cancel");
