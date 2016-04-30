@@ -186,7 +186,7 @@
     </property>
     <addaction name="openText"/>
     <addaction name="openKey"/>
-    <addaction name="action"/>
+    <addaction name="saveResult"/>
    </widget>
    <widget class="QMenu" name="menu_5">
     <property name="title">
@@ -255,7 +255,7 @@
     <string>Открыть ключ...</string>
    </property>
   </action>
-  <action name="action">
+  <action name="saveResult">
    <property name="text">
     <string>Сохранить...</string>
    </property>

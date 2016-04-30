@@ -43,6 +43,8 @@ private slots:
 
     void on_clear_clicked();
 
+    void on_saveResult_triggered();
+
 private:
     Ui::Crypt *ui;
 };

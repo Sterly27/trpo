@@ -21,7 +21,7 @@ Crypt::Crypt(QWidget *parent) :
 int vsnCrypt=0, check=0, check1=0, check2=0, check3=0, transformer=0, keyc;
 char *str, *str_key, *str_morze;
 QString st,st2,k;
-QByteArray itog;
+QByteArray result;
 
 Crypt::~Crypt()
 {
@@ -35,7 +35,6 @@ void Crypt::on_plainTextEdit_textChanged()
 
     if(transformer && check1 && check2 && check3 || transformer && vsnCrypt==2 && check1 && check2) ui->enter->setEnabled(true);
     else ui->enter->setEnabled(false);
-
 }
 
 void Crypt::on_comboBox_1_activated(int index)
@@ -77,13 +76,13 @@ void Crypt::on_lineEdit_textChanged(const QString &arg1)
 
 void Crypt::on_openText_triggered()
 {
-  QString filename = QFileDialog::getOpenFileName(0, "Открытие файла","..\\","*.crpt *.txt");
-  QFile file(filename);
-  file.open(QIODevice::ReadOnly);
-  QTextStream text(&file);
-  st=text.readAll();
-  ui->plainTextEdit->setPlainText(st);
-  file.close();
+    QString filename = QFileDialog::getOpenFileName(0, "Открытие файла","..\\","*.crpt *.txt");
+    QFile file(filename);
+    file.open(QIODevice::ReadOnly);
+    QTextStream text(&file);
+    st=text.readAll();
+    ui->plainTextEdit->setPlainText(st);
+    file.close();
 }
 
 void Crypt::on_openKey_triggered()
@@ -91,17 +90,28 @@ void Crypt::on_openKey_triggered()
     QString filenamekey = QFileDialog::getOpenFileName(0, "Открытие файла","..\\","*.key *.txt");
     QFile key(filenamekey);
     key.open(QIODevice::ReadOnly);
-    QTextStream inkey(&key);
-    k=inkey.readAll();
+    QTextStream inKey(&key);
+    k=inKey.readAll();
     ui->lineEdit->setText(k);
     key.close();
+}
+
+void Crypt::on_saveResult_triggered()
+{
+    QString savefile = QFileDialog::getSaveFileName(this,tr("Сохранить итоговый текст"),"",tr("Текстовый файл (*.txt)"));
+    QFile save(savefile);
+    save.open(QIODevice::WriteOnly);
+    QTextStream outText(&save);
+    outText << ui->plainTextEdit_2->toPlainText();
+    save.flush();
+    save.close();
 }
 
 void Crypt::on_enter_clicked()
 {    
     st=ui->plainTextEdit->toPlainText();
 
-    if(st.size()>10000){
+    if(st.size()>4096){
         QMessageBox *msg=new QMessageBox;
         msg->setObjectName("error1");
         msg->setWindowTitle("Error: invalid number of characters!");
@@ -110,16 +120,15 @@ void Crypt::on_enter_clicked()
         msg->exec();
     }
     else{
-
-        itog=st.toLocal8Bit();
-        str = new char[itog.size()];
-        strcpy(str, itog.data());
+        result=st.toLocal8Bit();
+        str = new char[result.size()];
+        strcpy(str, result.data());
 
         if(vsnCrypt==1){
             k=ui->lineEdit->text();
-            itog=k.toLocal8Bit();
-            str_key = new char[itog.size()];
-            strcpy(str_key, itog.data());
+            result=k.toLocal8Bit();
+            str_key = new char[result.size()];
+            strcpy(str_key, result.data());
 
             if(transformer==1){
 
@@ -143,7 +152,10 @@ void Crypt::on_enter_clicked()
                     msg->exec();
                 }
                 if(check == 0) ui->plainTextEdit_2->setPlainText(str);
+
             }
+            delete(str);
+            delete(str_key);
         }
 
         if(vsnCrypt==2){
@@ -163,6 +175,8 @@ void Crypt::on_enter_clicked()
                 }
                 else ui->plainTextEdit_2->setPlainText(str_morze);
             }
+            delete(str);
+            delete(str_morze);
         }
 
         if(vsnCrypt==3){
@@ -191,15 +205,16 @@ void Crypt::on_enter_clicked()
                 }
                 if(check == 0) ui->plainTextEdit_2->setPlainText(str);
             }
+            delete(str);
         }
     }
 }
 
 void Crypt::on_clear_clicked()
 {
-  ui->plainTextEdit->clear();
-  ui->plainTextEdit_2->clear();
-  ui->lineEdit->clear();
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit_2->clear();
+    ui->lineEdit->clear();
 }
 
 void Crypt::on_close_clicked()
