@@ -1,5 +1,11 @@
-#include <func.h>
-int main(){
+#include "crypt.h"
+#include <QApplication>
 
-  return 0;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    Crypt w;
+    w.show();
+
+    return a.exec();
 }
