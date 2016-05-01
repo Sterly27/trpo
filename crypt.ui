@@ -143,6 +143,11 @@
       <property name="enabled">
        <bool>false</bool>
       </property>
+      <property name="styleSheet">
+       <string notr="true">btn.resize(100, 50);
+ btn.show();
+ return app.exec();</string>
+      </property>
       <property name="text">
        <string>Ввод</string>
       </property>
