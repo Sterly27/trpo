@@ -108,14 +108,14 @@ void Crypt::on_saveResult_triggered()
 }
 
 void Crypt::on_enter_clicked()
-{    
+{
     st=ui->plainTextEdit->toPlainText();
 
     if(st.size()>4096){
         QMessageBox *msg=new QMessageBox;
         msg->setObjectName("error1");
         msg->setWindowTitle("Error: invalid number of characters!");
-        msg->setText("The maximum string length ten thousand characters.");
+        msg->setText("The maximum string length 4096 characters.");
         msg->setButtonText(1,"Cancel");
         msg->exec();
     }
