@@ -45,6 +45,10 @@ private slots:
 
     void on_saveResult_triggered();
 
+	void on_fontComboBox_currentFontChanged(const QFont &f);
+
+	void on_action_15_triggered();
+
 private:
     Ui::Crypt *ui;
 };

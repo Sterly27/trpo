@@ -286,3 +286,41 @@ void Crypt::on_close_clicked()
 {
     close();
 }
+
+void Crypt::on_fontComboBox_currentFontChanged(const QFont &f)
+{
+	ui->plainTextEdit->setFont(f);
+	ui->plainTextEdit_2->setFont(f);
+	ui->lineEdit->setFont(f);
+}
+
+void Crypt::on_action_15_triggered()
+{
+	QMessageBox* authors=new QMessageBox;
+	authors->setButtonText(1,"Молодцы!");
+	authors->setSizeIncrement(300,200);
+
+	authors->setWindowTitle("Над продуктом работали");
+	authors->setText("<td width=300 valign=top>"
+					 "Глава по "
+						"<font color = red>д"
+					 "<font color = orange>и"
+					 "<font color = yellow>з"
+					  "<font color = green>а"
+					   "<font color = cyan>й"
+					   "<font color = blue>н"
+					 "<font color = purple>у"
+					 "</font></font></font></font></font></font></font> "
+					 "и оформлению:"
+					 "<br>Автор шифра Цезаря:"
+					 "<br>Автор шифра Вижинера:"
+					 "<br>Автор шифра Морзе:</td>"
+
+					 "<td valign=top><b>"
+					 "Федотов Павел<br>"
+					 "Огнев Юрий<br>"
+					 "Санин Иван<br>"
+					 "Силкин Михаил</b>"
+					 );
+	authors->show();
+}

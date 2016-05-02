@@ -7,8 +7,10 @@ const int EMPTY = 1;
 int crpt(char* string,int key)
 { 
     if ((string[0]==0)||(!key)) return EMPTY;
-    for(int i=0;i<strlen(string);i++)
-    if((string[i] < 32) || (string[i] == 127)) {return 1;}
+
+	for(int i=0;i<strlen(string);i++)
+		if((string[i] < 32) || (string[i] == 127)) {return 1;}
+
 	if(key>70||key<0) return ERROR_SYMBOLS;
 	else
 	{

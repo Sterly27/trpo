@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>721</width>
+    <width>828</width>
     <height>507</height>
    </rect>
   </property>
@@ -35,68 +35,6 @@
     </font>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="5">
-     <widget class="QLineEdit" name="lineEdit">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="maxLength">
-       <number>0</number>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Тип преобразования:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <widget class="QComboBox" name="comboBox_2">
-      <item>
-       <property name="text">
-        <string>Не выбран</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Вижинера</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Морзе</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Цезаря</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="3" column="6">
-     <widget class="QPushButton" name="close">
-      <property name="text">
-       <string>Выход</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Выберене шифр:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="4">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>Введите ключ:</string>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="0" colspan="7">
      <widget class="QPlainTextEdit" name="plainTextEdit">
       <property name="font">
@@ -107,9 +45,12 @@
       <property name="readOnly">
        <bool>false</bool>
       </property>
+      <property name="plainText">
+       <string/>
+      </property>
      </widget>
     </item>
-    <item row="1" column="1">
+    <item row="1" column="1" alignment="Qt::AlignLeft">
      <widget class="QComboBox" name="comboBox_1">
       <item>
        <property name="text">
@@ -128,13 +69,16 @@
       </item>
      </widget>
     </item>
-    <item row="2" column="0" colspan="7">
+    <item row="3" column="0" colspan="7">
      <widget class="QPlainTextEdit" name="plainTextEdit_2">
       <property name="enabled">
        <bool>true</bool>
       </property>
       <property name="readOnly">
        <bool>true</bool>
+      </property>
+      <property name="plainText">
+       <string>Выберите тип преобразования и алгоритм шифрования</string>
       </property>
      </widget>
     </item>
@@ -162,22 +106,176 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="0" colspan="6">
+    <item row="1" column="5">
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>88</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="sizeIncrement">
+       <size>
+        <width>20</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>20</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="maxLength">
+       <number>0</number>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" alignment="Qt::AlignLeft">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Тип преобразования:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3" alignment="Qt::AlignHCenter">
+     <widget class="QComboBox" name="comboBox_2">
+      <item>
+       <property name="text">
+        <string>Не выбран</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Вижинера</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Морзе</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Цезаря</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="4" column="6">
+     <widget class="QPushButton" name="close">
+      <property name="text">
+       <string>Выход</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2" alignment="Qt::AlignRight">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Шифр:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="4" alignment="Qt::AlignRight">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Введите ключ:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
      <widget class="QPushButton" name="clear">
+      <property name="minimumSize">
+       <size>
+        <width>145</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>145</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="text">
        <string>Очистить</string>
       </property>
      </widget>
     </item>
+    <item row="4" column="1">
+     <widget class="QPushButton" name="pushButton">
+      <property name="minimumSize">
+       <size>
+        <width>118</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>118</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Скопировать</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="3">
+     <widget class="QFontComboBox" name="fontComboBox">
+      <property name="maximumSize">
+       <size>
+        <width>123</width>
+        <height>28</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2" alignment="Qt::AlignRight">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Текущий шрифт</string>
+      </property>
+     </widget>
+    </item>
    </layout>
+   <zorder>lineEdit</zorder>
+   <zorder>label</zorder>
+   <zorder>comboBox_2</zorder>
+   <zorder>close</zorder>
+   <zorder>label_2</zorder>
+   <zorder>plainTextEdit</zorder>
+   <zorder>comboBox_1</zorder>
+   <zorder>plainTextEdit_2</zorder>
+   <zorder>enter</zorder>
+   <zorder>clear</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>fontComboBox</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_3</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>721</width>
-     <height>21</height>
+     <width>828</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -268,5 +366,38 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>plainTextEdit_2</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>215</x>
+     <y>457</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>294</x>
+     <y>428</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>plainTextEdit_2</receiver>
+   <slot>copy()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>246</x>
+     <y>461</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>430</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
