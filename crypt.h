@@ -49,6 +49,10 @@ private slots:
 
 	void on_action_15_triggered();
 
+	void on_comboBox_1_currentIndexChanged(int index);
+
+	void on_comboBox_2_currentIndexChanged(int index);
+
 private:
     Ui::Crypt *ui;
 };

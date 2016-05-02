@@ -111,30 +111,6 @@
       <property name="enabled">
        <bool>false</bool>
       </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>88</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="sizeIncrement">
-       <size>
-        <width>20</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="baseSize">
-       <size>
-        <width>20</width>
-        <height>30</height>
-       </size>
-      </property>
       <property name="maxLength">
        <number>0</number>
       </property>

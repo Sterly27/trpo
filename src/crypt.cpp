@@ -324,3 +324,30 @@ void Crypt::on_action_15_triggered()
 					 );
 	authors->show();
 }
+
+void Crypt::on_comboBox_1_currentIndexChanged(int index)
+{
+	if (ui->comboBox_2->currentIndex()==0&&index!=0)
+		ui->plainTextEdit_2->setPlainText("Выберите алгоритм шифрования");
+	if (ui->comboBox_2->currentIndex()!=0&&index!=0)
+		ui->plainTextEdit_2->setPlainText(" ");
+	if (ui->comboBox_2->currentIndex()!=0&&index==0)
+		ui->plainTextEdit_2->setPlainText("Выберите тип преобразования");
+	if (ui->comboBox_2->currentIndex()==0&&index==0)
+		ui->plainTextEdit_2->setPlainText("Выберите тип преобразования и алгоритм шифрования");
+}
+
+void Crypt::on_comboBox_2_currentIndexChanged(int index)
+{
+	if (ui->comboBox_1->currentIndex()==0&&index!=0)
+		ui->plainTextEdit_2->setPlainText("Выберите алгоритм шифрования");
+
+	if (ui->comboBox_1->currentIndex()!=0&&index!=0)
+		ui->plainTextEdit_2->setPlainText(" ");
+
+	if (ui->comboBox_1->currentIndex()!=0&&index==0)
+		ui->plainTextEdit_2->setPlainText("Выберите тип преобразования");
+
+	if (ui->comboBox_1->currentIndex()==0&&index==0)
+		ui->plainTextEdit_2->setPlainText("Выберите тип преобразования и алгоритм шифрования");
+}
