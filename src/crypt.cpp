@@ -6,6 +6,7 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QMessageBox>
+#include <QRgb>
 #include <QWidget>
 #include <QApplication>
 #include <QByteArray>
@@ -48,6 +49,7 @@ void Crypt::on_comboBox_1_activated(int index)
    if(transformer && check1 && check2 && check3 || transformer && vsnCrypt==2 && check1 && check2) ui->enter->setEnabled(true);
    else ui->enter->setEnabled(false);
 }
+
 
 void Crypt::on_comboBox_2_activated(int index)
 {
@@ -282,11 +284,6 @@ void Crypt::on_clear_clicked()
     ui->lineEdit->clear();
 }
 
-void Crypt::on_close_clicked()
-{
-    close();
-}
-
 void Crypt::on_fontComboBox_currentFontChanged(const QFont &f)
 {
 	ui->plainTextEdit->setFont(f);
@@ -351,3 +348,37 @@ void Crypt::on_comboBox_2_currentIndexChanged(int index)
 	if (ui->comboBox_1->currentIndex()==0&&index==0)
 		ui->plainTextEdit_2->setPlainText("Выберите тип преобразования и алгоритм шифрования");
 }
+
+void Crypt::on_close_clicked()
+{
+	close();
+}
+
+void Crypt::changeFont(QFont &qf)
+{
+	ui->centralWidget->setFont(qf);
+
+}
+
+void Crypt::on_action_3_triggered()
+{
+	QWidget *wdg=new QWidget;
+	wdg->show();
+	QLabel *label=new QLabel;
+	label->setText("Шрифт: ");
+	label->setGeometry(QRect(25,48,100,20));
+	label->setParent(wdg);
+	label->show();
+	QFontComboBox *qfont=new QFontComboBox;
+
+	qfont->setParent(wdg);
+	qfont->setGeometry(QRect(100,50,100,20));
+	qfont->show();
+	QPushButton* pb=new QPushButton;
+	pb->setObjectName("Button_Mash");
+	pb->show();
+	connect(pb,SIGNAL(clicked()),this,SLOT(changeFont(qfont)));
+	pb->setGeometry(QRect (200,200,100,20));
+}
+
+

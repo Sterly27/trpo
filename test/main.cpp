@@ -1,5 +1,5 @@
 #define CTEST_MAIN
-//#include "distance_test.cpp"
+#include "distance_test.cpp"
 #include "../thirdparty/ctest.h"
 #include "test.cpp"
 #include "testvigi.cpp"

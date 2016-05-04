@@ -7,13 +7,19 @@ void demorze(char* str){
     char* itog;
 	itog=new char [strlen(str)+1];
     char temp[8]={0,0,0,0,0,0,0,0};
-
-
+    
 	int f=0,t=0,nbukv=1;
-
+	
 	for (unsigned int i=0;i<strlen(str);i++){
 		if (str[i]=='|')
 			nbukv++;
+		if (str[i]!='|'&&str[i]!='*'&&str[i]!='-'
+			&&str[i]!=' '&&str[i]!='\n'){
+			itog[0]=0;
+			strcpy(str,itog);
+			return;
+			}
+			
 	}
 	unsigned int i=0;
 
@@ -69,6 +75,7 @@ void demorze(char* str){
 		if (!strcmp(temp,"-**-"))itog[t++]='x';
 		if (!strcmp(temp,"-*--"))itog[t++]='y';
 		if (!strcmp(temp,"--**"))itog[t++]='z';
+		if (!strcmp(temp," "))itog[t++]=' ';
             temp[0]=0;
             temp[1]=0;
             temp[2]=0;
