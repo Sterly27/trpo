@@ -4,6 +4,8 @@
 
 int crpt(char* string,int key);
 
+int decrpt(char* string,int key);
+
 int vig(char a[],char b[]);
 
 int devig(char a[],char b[]);

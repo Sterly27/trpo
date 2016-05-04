@@ -251,7 +251,7 @@ void Crypt::on_enter_clicked()
 
             if(transformer==2){
 
-                check=crpt(str,keyc);
+                check=decrpt(str,keyc);
 
                 if(check < 0){
                     QMessageBox *msg=new QMessageBox;
