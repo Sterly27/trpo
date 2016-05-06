@@ -48,16 +48,6 @@ void Crypt::on_comboBox_1_activated(int index)
 
    if(transformer && check1 && check2 && check3 || transformer && vsnCrypt==2 && check1 && check2) ui->enter->setEnabled(true);
    else ui->enter->setEnabled(false);
-
-
-   if (!check2 && transformer)
-       ui->plainTextEdit_2->setPlainText("Выберите алгоритм шифрования");
-   if (check2 && transformer)
-       ui->plainTextEdit_2->clear();
-   if (check2 && !transformer)
-       ui->plainTextEdit_2->setPlainText("Выберите тип преобразования");
-   if (!check2 && !transformer)
-       ui->plainTextEdit_2->setPlainText("Выберите тип преобразования и алгоритм шифрования");
 }
 
 
@@ -75,16 +65,6 @@ void Crypt::on_comboBox_2_activated(int index)
 
     if(transformer && check1 && check2 && check3 || transformer && vsnCrypt==2 && check1 && check2) ui->enter->setEnabled(true);
     else ui->enter->setEnabled(false);
-
-
-    if (!check2 && transformer)
-        ui->plainTextEdit_2->setPlainText("Выберите алгоритм шифрования");
-    if (check2 && transformer)
-        ui->plainTextEdit_2->clear();
-    if (check2 && !transformer)
-        ui->plainTextEdit_2->setPlainText("Выберите тип преобразования");
-    if (!check2 && !transformer)
-        ui->plainTextEdit_2->setPlainText("Выберите тип преобразования и алгоритм шифрования");
 }
 
 void Crypt::on_lineEdit_textChanged(const QString &arg1)
@@ -120,7 +100,6 @@ void Crypt::on_openKey_triggered()
 
 void Crypt::on_saveResult_triggered()
 {
-    if(!ui->plainTextEdit_2->toPlainText().isEmpty() && check2 && transformer){
     QString savefile = QFileDialog::getSaveFileName(this,tr("Сохранить итоговый текст"),"",tr("Текстовый файл (*.txt)"));
     QFile save(savefile);
     save.open(QIODevice::WriteOnly);
@@ -128,15 +107,6 @@ void Crypt::on_saveResult_triggered()
     outText << ui->plainTextEdit_2->toPlainText();
     save.flush();
     save.close();
-    }
-    else{
-        QMessageBox *msg=new QMessageBox;
-        msg->setObjectName("error_rezult");
-        msg->setWindowTitle("Error: string is empty!");
-        msg->setText("Encrypted/decrypted text is absent");
-        msg->setButtonText(1,"Cancel");
-        msg->exec();
-    }
 }
 
 void Crypt::on_enter_clicked()
@@ -307,6 +277,13 @@ void Crypt::on_enter_clicked()
     }
 }
 
+void Crypt::on_clear_clicked()
+{
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit_2->clear();
+    ui->lineEdit->clear();
+}
+
 void Crypt::on_fontComboBox_currentFontChanged(const QFont &f)
 {
 	ui->plainTextEdit->setFont(f);
@@ -345,41 +322,63 @@ void Crypt::on_action_15_triggered()
 	authors->show();
 }
 
-//void Crypt::changeFont(QFont &qf)
-//{
-//	ui->centralWidget->setFont(qf);
-
-//}
-
-//void Crypt::on_action_3_triggered()
-//{
-//	QWidget *wdg=new QWidget;
-//	wdg->show();
-//	QLabel *label=new QLabel;
-//	label->setText("Шрифт: ");
-//	label->setGeometry(QRect(25,48,100,20));
-//	label->setParent(wdg);
-//	label->show();
-//	QFontComboBox *qfont=new QFontComboBox;
-
-//	qfont->setParent(wdg);
-//	qfont->setGeometry(QRect(100,50,100,20));
-//	qfont->show();
-//	QPushButton* pb=new QPushButton;
-//	pb->setObjectName("Button_Mash");
-//	pb->show();
-//	connect(pb,SIGNAL(clicked()),this,SLOT(changeFont(qfont)));
-//	pb->setGeometry(QRect (200,200,100,20));
-//}
-
-void Crypt::on_clear_clicked()
+void Crypt::on_comboBox_1_currentIndexChanged(int index)
 {
-    ui->plainTextEdit->clear();
-    ui->plainTextEdit_2->clear();
-    ui->lineEdit->clear();
+	if (ui->comboBox_2->currentIndex()==0&&index!=0)
+		ui->plainTextEdit_2->setPlainText("Выберите алгоритм шифрования");
+	if (ui->comboBox_2->currentIndex()!=0&&index!=0)
+		ui->plainTextEdit_2->setPlainText(" ");
+	if (ui->comboBox_2->currentIndex()!=0&&index==0)
+		ui->plainTextEdit_2->setPlainText("Выберите тип преобразования");
+	if (ui->comboBox_2->currentIndex()==0&&index==0)
+		ui->plainTextEdit_2->setPlainText("Выберите тип преобразования и алгоритм шифрования");
+}
+
+void Crypt::on_comboBox_2_currentIndexChanged(int index)
+{
+	if (ui->comboBox_1->currentIndex()==0&&index!=0)
+		ui->plainTextEdit_2->setPlainText("Выберите алгоритм шифрования");
+
+	if (ui->comboBox_1->currentIndex()!=0&&index!=0)
+		ui->plainTextEdit_2->setPlainText(" ");
+
+	if (ui->comboBox_1->currentIndex()!=0&&index==0)
+		ui->plainTextEdit_2->setPlainText("Выберите тип преобразования");
+
+	if (ui->comboBox_1->currentIndex()==0&&index==0)
+		ui->plainTextEdit_2->setPlainText("Выберите тип преобразования и алгоритм шифрования");
 }
 
 void Crypt::on_close_clicked()
 {
-    close();
+	close();
 }
+
+void Crypt::changeFont(QFont &qf)
+{
+	ui->centralWidget->setFont(qf);
+
+}
+
+void Crypt::on_action_3_triggered()
+{
+	QWidget *wdg=new QWidget;
+	wdg->show();
+	QLabel *label=new QLabel;
+	label->setText("Шрифт: ");
+	label->setGeometry(QRect(25,48,100,20));
+	label->setParent(wdg);
+	label->show();
+	QFontComboBox *qfont=new QFontComboBox;
+
+	qfont->setParent(wdg);
+	qfont->setGeometry(QRect(100,50,100,20));
+	qfont->show();
+	QPushButton* pb=new QPushButton;
+	pb->setObjectName("Button_Mash");
+	pb->show();
+	connect(pb,SIGNAL(clicked()),this,SLOT(changeFont(qfont)));
+	pb->setGeometry(QRect (200,200,100,20));
+}
+
+
