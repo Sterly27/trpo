@@ -27,7 +27,6 @@ public:
     ~Crypt();
 
 private slots:
-	void changeFont(QFont &qf);
 
     void on_plainTextEdit_textChanged();
 
@@ -53,11 +52,9 @@ private slots:
 
 	void on_action_15_triggered();
 
-	void on_comboBox_1_currentIndexChanged(int index);
+//	void changeFont(QFont &qf);
 
-	void on_comboBox_2_currentIndexChanged(int index);
-
-	void on_action_3_triggered();
+//	void on_action_3_triggered();
 
 private:
     Ui::Crypt *ui;
