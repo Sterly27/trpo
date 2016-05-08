@@ -7,7 +7,7 @@ void demorze(char* str){
     char* itog;
 	itog=new char [strlen(str)+1];
     char temp[8]={0,0,0,0,0,0,0,0};
-    
+
 	int f=0,t=0,nbukv=1;
 	
 	for (unsigned int i=0;i<strlen(str);i++){
@@ -259,7 +259,7 @@ for(unsigned int i=0;i<strlen(str);i++){
  if (str[i]=='E'||str[i]=='e'){
 		 total[j++]='*';
 	 }
- if (str[i]=='F'||str[i]=='f'){total[j++]='*';
+ if (str[i]=='F'||str[i]=='f'){
 		 total[j++]='*';
 		 total[j++]='*';
 		 total[j++]='-';
@@ -333,7 +333,7 @@ for(unsigned int i=0;i<strlen(str);i++){
 		 total[j++]='*';
 	 }
  if (str[i]=='T'||str[i]=='t'){
-		total[j++]='*';
+        total[j++]='-';
 	 }
  if (str[i]=='Y'||str[i]=='y'){
 		 total[j++]='-';
