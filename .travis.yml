@@ -1,0 +1,28 @@
+sudo: required
+dist: trusty
+language: cpp
+
+compiler:
+    - clang
+    - gcc
+
+os:
+    - linux
+
+env:
+  - BUILD_MODE=release
+  - BUILD_MODE=debug
+
+install:
+    - if [ "${TRAVIS_OS_NAME}" = "linux" -a "${CXX}" = "clang++" ]; then export MKSPEC=linux-clang; fi
+    - if [ "${TRAVIS_OS_NAME}" = "linux" -a "${CXX}" = "g++" ]; then export MKSPEC=linux-g++; fi
+    - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then sudo apt-get -y update -qq && sudo apt-get -y install qt5-default; fi
+
+script:
+    - echo "Building for ${MKSPEC} in ${BUILD_MODE} mode..."
+    - mkdir build
+    - cd build
+    - qmake ../Crypt.pro -spec ${MKSPEC} CONFIG+=${BUILD_MODE}
+    - make
+    - ls -lRa .
+    - file app/app
