@@ -24,5 +24,3 @@ script:
     - cd build
     - qmake ../Crypt.pro -spec ${MKSPEC} CONFIG+=${BUILD_MODE}
     - make
-    - ls -lRa .
-    - file app/app
