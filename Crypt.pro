@@ -19,7 +19,7 @@ SOURCES += src/main.cpp \
     src/func_morze.cpp
 
 HEADERS  += \
-    crypt.h
+    src/crypt.h
 
 FORMS    += \
-    crypt.ui
+    src/crypt.ui

@@ -1,5 +1,5 @@
 #include <string.h>
-#include "../test_crypt.h"
+#include "test_crypt.h"
 
 CTEST (morze, test1){
   const char a[]="hello world, how you doing?";

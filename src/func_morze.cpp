@@ -7,7 +7,7 @@ void demorze(char* str){
     char* itog;
 	itog=new char [strlen(str)+1];
     char temp[8]={0,0,0,0,0,0,0,0};
-
+    
 	int f=0,t=0,nbukv=1;
 	
 	for (unsigned int i=0;i<strlen(str);i++){
@@ -92,14 +92,14 @@ delete itog;
 
 void morze(char* str, char* total){  
  int j=0;
-    //Allowed CHARs*************
-    int LeftEdge1 = 'a';
-    int RightEdge1 = 'z';
-    int RightEdge2 = 'Z';
-    int LeftEdge2 = 'A';
+	//Allowed CHARs************
+	int LeftEdge1 = 'a';
+	int RightEdge1 = 'z';
+	int RightEdge2 = 'Z';
+	int LeftEdge2 = 'A';
 
-    int NumLeftEdge = '0';
-    int NumRightEdge = '9';
+	int NumLeftEdge = '0';
+	int NumRightEdge = '9';
 	//**************************
 	int stop=0;
 
@@ -114,7 +114,7 @@ for(unsigned int i=0;i<strlen(str);i++){
 			(str[i]>=LeftEdge2&&str[i]<=RightEdge2)||
 			(str[i]>=NumLeftEdge&&str[i]<=NumRightEdge)||
 			str[i]=='?'||str[i]=='.'||str[i]==','||
-            str[i]=='!'||str[i]==' '||str[i]=='\n')
+			str[i]=='!'||str[i]==' ')
 			) {
 		stop=1;
 	}
@@ -259,7 +259,7 @@ for(unsigned int i=0;i<strlen(str);i++){
  if (str[i]=='E'||str[i]=='e'){
 		 total[j++]='*';
 	 }
- if (str[i]=='F'||str[i]=='f'){
+ if (str[i]=='F'||str[i]=='f'){total[j++]='*';
 		 total[j++]='*';
 		 total[j++]='*';
 		 total[j++]='-';
@@ -333,7 +333,7 @@ for(unsigned int i=0;i<strlen(str);i++){
 		 total[j++]='*';
 	 }
  if (str[i]=='T'||str[i]=='t'){
-        total[j++]='-';
+		total[j++]='*';
 	 }
  if (str[i]=='Y'||str[i]=='y'){
 		 total[j++]='-';
@@ -368,14 +368,10 @@ for(unsigned int i=0;i<strlen(str);i++){
 		 total[j++]='-';
 		 total[j++]='*';
 		 total[j++]='*';
-     }
- if (str[i]==' '){
-     total[j++]=' ';
- }
-
- if (str[i]=='\n'){
-     total[j++]='\n';
- }
+	 }
+	if (str[i]==' '){
+		total[j++]=' ';
+	}
 
 	 if (str[i] != '|')
 		 total[j++]='|';

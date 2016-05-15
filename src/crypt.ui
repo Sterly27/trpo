@@ -9,20 +9,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
-    <height>422</height>
+    <width>844</width>
+    <height>517</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>900</width>
-    <height>205</height>
-   </size>
-  </property>
-  <property name="baseSize">
-   <size>
-    <width>900</width>
-    <height>205</height>
+    <width>118</width>
+    <height>30</height>
    </size>
   </property>
   <property name="font">
@@ -37,9 +31,6 @@
   <property name="windowTitle">
    <string>Crypt</string>
   </property>
-  <property name="layoutDirection">
-   <enum>Qt::LeftToRight</enum>
-  </property>
   <widget class="QWidget" name="centralWidget">
    <property name="enabled">
     <bool>true</bool>
@@ -50,7 +41,7 @@
     </font>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0" colspan="9">
+    <item row="0" column="0" colspan="7">
      <widget class="QPlainTextEdit" name="plainTextEdit">
       <property name="font">
        <font>
@@ -65,20 +56,14 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="2">
+    <item row="1" column="0">
      <widget class="QLabel" name="label">
-      <property name="minimumSize">
-       <size>
-        <width>180</width>
-        <height>0</height>
-       </size>
-      </property>
       <property name="text">
        <string>Тип преобразования:</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="2" colspan="2">
+    <item row="1" column="1">
      <widget class="QComboBox" name="comboBox_1">
       <property name="minimumSize">
        <size>
@@ -103,7 +88,7 @@
       </item>
      </widget>
     </item>
-    <item row="1" column="4">
+    <item row="1" column="2">
      <widget class="QLabel" name="label_3">
       <property name="text">
        <string>Шифр:</string>
@@ -113,7 +98,7 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="5">
+    <item row="1" column="3">
      <widget class="QComboBox" name="comboBox_2">
       <property name="minimumSize">
        <size>
@@ -143,14 +128,14 @@
       </item>
      </widget>
     </item>
-    <item row="1" column="6">
+    <item row="1" column="4">
      <widget class="QLabel" name="label_2">
       <property name="text">
        <string>Введите ключ:</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="7">
+    <item row="1" column="5">
      <widget class="QLineEdit" name="lineEdit">
       <property name="enabled">
        <bool>false</bool>
@@ -166,7 +151,7 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="8">
+    <item row="1" column="6">
      <widget class="QPushButton" name="enter">
       <property name="enabled">
        <bool>false</bool>
@@ -196,7 +181,7 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0" colspan="9">
+    <item row="2" column="0" colspan="7">
      <widget class="QPlainTextEdit" name="plainTextEdit_2">
       <property name="enabled">
        <bool>true</bool>
@@ -228,7 +213,7 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="1" colspan="2">
+    <item row="3" column="1">
      <widget class="QPushButton" name="pushButton">
       <property name="minimumSize">
        <size>
@@ -247,14 +232,14 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="3" colspan="2">
+    <item row="3" column="2">
      <widget class="QLabel" name="label_4">
       <property name="text">
        <string>Текущий шрифт</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="5">
+    <item row="3" column="3">
      <widget class="QFontComboBox" name="fontComboBox">
       <property name="maximumSize">
        <size>
@@ -267,7 +252,7 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="8">
+    <item row="3" column="6">
      <widget class="QPushButton" name="close">
       <property name="minimumSize">
        <size>
@@ -301,8 +286,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>900</width>
-     <height>26</height>
+     <width>844</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -324,14 +309,7 @@
     </property>
     <addaction name="action_15"/>
    </widget>
-   <widget class="QMenu" name="menu_2">
-    <property name="title">
-     <string>Настройки</string>
-    </property>
-    <addaction name="action_3"/>
-   </widget>
    <addaction name="menu"/>
-   <addaction name="menu_2"/>
    <addaction name="menu_5"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>

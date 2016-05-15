@@ -27,7 +27,6 @@ public:
     ~Crypt();
 
 private slots:
-
     void on_plainTextEdit_textChanged();
 
     void on_close_clicked();
@@ -52,11 +51,12 @@ private slots:
 
 	void on_action_15_triggered();
 
-//	void changeFont(QFont &qf);
-
-//	void on_action_3_triggered();
-
 private:
+    int vsnCrypt=0, check=0, check1=0, check2=0, check3=0, transformer=0, keyc;
+    char *str, *str_key, *str_morze;
+    QString st,st2,k;
+    QByteArray result;
+
     Ui::Crypt *ui;
 };
 
