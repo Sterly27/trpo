@@ -1,7 +1,8 @@
 #ifndef CRYPT_H
 #define CRYPT_H
+#ifndef CTEST_MAIN
 #include <QMainWindow>
-
+#endif
 int crpt(char* string,int key);
 
 int decrpt(char* string,int key);
@@ -13,7 +14,7 @@ int devig(char a[],char b[]);
 void morze(char* str, char* total);
 
 void demorze(char* str);
-
+#ifndef CTEST_MAIN
 namespace Ui {
 class Crypt;
 }
@@ -59,5 +60,5 @@ private:
 
     Ui::Crypt *ui;
 };
-
+#endif
 #endif // CRYPT_H

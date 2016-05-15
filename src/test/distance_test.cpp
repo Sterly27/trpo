@@ -1,5 +1,5 @@
 #include "../../thirdparty/ctest.h"
-#include "test_crypt.h"
+#include "../crypt.h"
 //crypt
 CTEST(distance_suite, NO_ERROR_CRYPT)
 {	

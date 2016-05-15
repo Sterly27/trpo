@@ -1,5 +1,5 @@
 #include <string.h>
-#include "test_crypt.h"
+#include "../crypt.h"
 
 CTEST (vigi,test1pt1){
       // General operability
