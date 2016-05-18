@@ -11,12 +11,13 @@ int crpt(char* string,int key)
 	for(int i=0;i<strlen(string);i++)
         if((string[i] < 32) && (string[i]!='\n') || (string[i] == 127)) {return 1;}
 
-    if(key>100||key<0) return ERROR_SYMBOLS;
-    if(key>96) key-=96;
+    if(key<0) return ERROR_SYMBOLS;
+	while (key>95) key-=95;
 
     for (int i =0; i<strlen(string);++i){
             if(string[i]=='\n') continue;
 
+            while ( (int)(string[i] + key) > 126) key -= 95;
             string[i]+=key;
     }
     return NO_ERROR;
@@ -30,12 +31,13 @@ int decrpt(char* string,int key)
     for(int i=0;i<strlen(string);i++)
         if((string[i] < 32) && (string[i]!='\n') || (string[i] == 127)) {return 1;}
 
-    if(key>100||key<0) return ERROR_SYMBOLS;
-    if(key>96) key-=96;
+    if(key<0) return ERROR_SYMBOLS;
+	while (key>95) key-=95;
 
     for (int i =0; i<strlen(string);++i){
             if(string[i]=='\n') continue;
 
+            while ( (int)(string[i] - key) < 32 ) string[i] += 95;
             string[i]-=key;
     }
     return NO_ERROR;
