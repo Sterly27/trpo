@@ -50,6 +50,11 @@ else
     mkdir tests
     cd ..
     make -f Makefile~2
+    cd ./bin/tests
+    qmake-qt5 ../../src/test/GUI_Tests/GUI_Tests.pro
+    make
+    make clean
+    rm Makefile
     echo Job done
 fi
 
