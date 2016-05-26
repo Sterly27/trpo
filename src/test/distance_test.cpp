@@ -8,7 +8,7 @@ CTEST(distance_suite, NO_ERROR_CRYPT)
 	
 	crpt(str,key);
 
-	char expected_d[] = "rtfqwzvjlsbpgedkihoy{`uamn2107654;:3";
+	char expected_d[] = "tzhuw|xlrsdvgijkmno}{fyeqp456789:;<3";
 
 	assert_str(expected_d,str,"a",1);
 }
@@ -38,7 +38,7 @@ CTEST(distance_suite, EMPTY_STR)
 //decrypt
 CTEST(distance_suite, NO_ERROR_DECRYPT)
 {	
-	char str[] = "rtfqwzvjlsbpgedkihoy{`uamn2107654;:3";
+	char str[] = "tzhuw|xlrsdvgijkmno}{fyeqp456789:;<3";
 	int key = 3;
 	
 	crpt(str,key);

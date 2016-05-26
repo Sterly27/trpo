@@ -313,11 +313,14 @@ void Crypt::on_action_15_triggered()
 {
 	QMessageBox* authors=new QMessageBox;
 	authors->setButtonText(1,"Молодцы!");
-	authors->setSizeIncrement(300,200);
+    authors->setSizeIncrement(250,200);
 
-	authors->setWindowTitle("Над продуктом работали");
-	authors->setText("<td width=300 valign=top>"
-					 "Глава по "
+    authors->setWindowTitle("O Crypt VCM");
+    authors->setText("<center><h1>Crypt VCM 1.0</h1></center>"
+                     "Это приложение создано для шифровки и дешифровки текста<br>одним из трёх видов шифра: Вижинер, Морзе или Цезарь.<br>"
+                     "<td width=200 valign=top>"
+                     "<strong>Над проектом работали:</strong><br>"
+                     "Глава по "
 						"<font color = red>д"
 					 "<font color = orange>и"
 					 "<font color = yellow>з"
@@ -326,16 +329,18 @@ void Crypt::on_action_15_triggered()
 					   "<font color = blue>н"
 					 "<font color = purple>у"
 					 "</font></font></font></font></font></font></font> "
-					 "и оформлению:"
+                     " и оформлению:"
 					 "<br>Автор шифра Цезаря:"
 					 "<br>Автор шифра Вижинера:"
-					 "<br>Автор шифра Морзе:</td>"
+                     "<br>Автор шифра Морзе:<br>"
+                     "<a href=https://github.com/BjornSodenberg/TRPO>"
+                     "<center><strong>Вы можете посетить наш репозиторий на GitHub.com</strong></center></a></td>"
 
-					 "<td valign=top><b>"
+                     "<td valign=top><b><br>"
 					 "Федотов Павел<br>"
 					 "Огнев Юрий<br>"
 					 "Санин Иван<br>"
-					 "Силкин Михаил</b>"
+                     "Силкин Михаил</b>"
 					 );
 	authors->show();
 }
