@@ -16,11 +16,11 @@ CTEST(distance_suite, NO_ERROR_CRYPT)
 CTEST(distance_suite, EMPTY_KEY)
 {
 	char str[] = "aaaaa";
-	int key;
+        int key = 0;
 	
 	int distance = crpt(str,key);
 
-	double expected_d = -1;
+	double expected_d = 1;
 
 	ASSERT_DBL_NEAR(expected_d,distance);
 }
@@ -41,7 +41,7 @@ CTEST(distance_suite, NO_ERROR_DECRYPT)
 	char str[] = "tzhuw|xlrsdvgijkmno}{fyeqp456789:;<3";
 	int key = 3;
 	
-	crpt(str,key);
+	decrpt(str,key);
 
 	char expected_d[] = "qwertyuiopasdfghjklzxcvbnm1234567890";
 
