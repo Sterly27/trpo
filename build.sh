@@ -18,8 +18,9 @@ rm -f $i
 done
 cd ..
 rm -r Windows
-mingw32-qmake-qt5 ../Crypt.pro
-make
+QMAKESPEC=win32-g++
+mingw32-qmake-qt5 ../Crypt.pro -spec win32-g++
+mingw32-make
 rm -r debug
 mv release Windows
 cd Windows
